@@ -28,32 +28,34 @@ const MENU_ITEMS = [
   }
 ];
 
+const resolveUrl = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`;
+
 const LOCAL_VIDEOS = [
-  "/video/SaveClip.App_AQN0lLNqJzNDRwX4smvLautLXcQIalxQUDSbab_5lxRyi3dblu6JrI85vu3yiuHIOvMVnFC_AEPiJaIN_GXN4xpqEoXFI473ZlFOxEA.mp4",
-  "/video/SaveClip.App_AQOyK59IxCDvr5nX9XSWBQ_0qY7vkqeg-jF7WHmVQPDXVCY1SFXflm5EsM-LAPQ2dqErtoPiSqBezDJxR_JDC3SY9idNEih0u0ciBEw.mp4"
+  resolveUrl("/video/SaveClip.App_AQN0lLNqJzNDRwX4smvLautLXcQIalxQUDSbab_5lxRyi3dblu6JrI85vu3yiuHIOvMVnFC_AEPiJaIN_GXN4xpqEoXFI473ZlFOxEA.mp4"),
+  resolveUrl("/video/SaveClip.App_AQOyK59IxCDvr5nX9XSWBQ_0qY7vkqeg-jF7WHmVQPDXVCY1SFXflm5EsM-LAPQ2dqErtoPiSqBezDJxR_JDC3SY9idNEih0u0ciBEw.mp4")
 ];
 
-const BRAND_LOGO = "/images/logos/roboneo_image_with_aigc.png";
+const BRAND_LOGO = resolveUrl("/images/logos/roboneo_image_with_aigc.png");
 
 const FLAVOR_LOGOS = [
-  "/images/logos/roboneo_image_with_aigc.png",
-  "/images/products/IMG_3942.png",
+  resolveUrl("/images/logos/roboneo_image_with_aigc.png"),
+  resolveUrl("/images/products/IMG_3942.png"),
 ];
 
 const VAPERS_ASSETS: { type: 'image' | 'video', src: string }[] = [
-  { type: 'image', src: '/images/vapers/IMG_3937.jpeg'},
-  { type: 'image', src: '/images/vapers/IMG_3938.jpeg'},
-  { type: 'image', src: '/images/vapers/IMG_3939.jpeg'},
-  { type: 'image', src: '/images/vapers/IMG_3940.jpeg'},
-  { type: 'image', src: '/images/vapers/IMG_3941.jpeg'}
+  { type: 'image', src: resolveUrl('/images/vapers/IMG_3937.jpeg') },
+  { type: 'image', src: resolveUrl('/images/vapers/IMG_3938.jpeg') },
+  { type: 'image', src: resolveUrl('/images/vapers/IMG_3939.jpeg') },
+  { type: 'image', src: resolveUrl('/images/vapers/IMG_3940.jpeg') },
+  { type: 'image', src: resolveUrl('/images/vapers/IMG_3941.jpeg') }
 ];
 
 const PROMOCIONES_PICS = [
-  "/images/promociones/IMG_3933.jpeg",
-  "/images/promociones/IMG_3934.jpeg",
+  resolveUrl("/images/promociones/IMG_3933.jpeg"),
+  resolveUrl("/images/promociones/IMG_3934.jpeg"),
 ];
 
-const SNOOP_IMAGE = "/images/Snoop/IMG_3942.png"; // <-- La ruta de la imagen de Snoop Dogg, asegúrate de subir la imagen en public/images/Snoop/IMG_3942.png
+const SNOOP_IMAGE = resolveUrl("/images/Snoop/IMG_3942.png"); // <-- La ruta de la imagen de Snoop Dogg, asegúrate de subir la imagen en public/images/Snoop/IMG_3942.png
 
 function AgeVerification({ onVerify }: { onVerify: () => void }) {
   const [scanning, setScanning] = useState(true);
