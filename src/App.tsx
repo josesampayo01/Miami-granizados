@@ -5,7 +5,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Instagram, MapPin, Phone, CupSoda, Wind, Star, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Instagram, MapPin, Phone, CupSoda, Wind, Star, ChevronLeft, ChevronRight, X } from 'lucide-react';
 
 const MENU_ITEMS = [
   {
@@ -249,10 +249,78 @@ function AgeVerification({ onVerify }: { onVerify: () => void }) {
 
 export default function App() {
   const [isAgeVerified, setIsAgeVerified] = useState(false);
+  const [selectedVaper, setSelectedVaper] = useState<{ type: 'image' | 'video', src: string } | null>(null);
 
   return (
     <div className="bg-dark-bg min-h-screen text-white font-body selection:bg-miami-pink selection:text-white relative">
       {!isAgeVerified && <AgeVerification onVerify={() => setIsAgeVerified(true)} />}
+
+      <AnimatePresence>
+        {selectedVaper && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 p-4 overflow-hidden"
+          >
+            {/* Dark overlay close area */}
+            <div className="absolute inset-0 cursor-pointer" onClick={() => setSelectedVaper(null)} />
+            
+            <button 
+              onClick={() => setSelectedVaper(null)}
+              className="absolute top-6 right-6 md:top-10 md:right-10 z-[110] bg-zinc-900 border border-zinc-800 rounded-full p-2 hover:bg-zinc-800 transition-colors"
+            >
+              <X className="w-6 h-6 text-miami-cyan" />
+            </button>
+
+            <motion.div 
+              initial={{ scale: 0.8, y: 50 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.8, y: 50 }}
+              transition={{ type: "spring", damping: 20, stiffness: 100 }}
+              className="relative w-full max-w-3xl max-h-[90vh] flex items-center justify-center z-10 pointer-events-none"
+            >
+              {/* Smoke effect generator using motion */}
+              {[...Array(8)].map((_, i) => (
+                <motion.div
+                  key={i}
+                  className="absolute bottom-0 w-32 h-32 md:w-48 md:h-48 bg-zinc-400 blur-3xl rounded-full mix-blend-screen -z-10"
+                  initial={{ y: 50, scale: 0.5, opacity: 0, x: 0 }}
+                  animate={{ 
+                    y: -500 - Math.random() * 300, 
+                    x: (Math.random() - 0.5) * 400,
+                    scale: 2 + Math.random() * 3, 
+                    opacity: [0, 0.4, 0] 
+                  }}
+                  transition={{ 
+                    duration: 3 + Math.random() * 3, 
+                    repeat: Infinity,
+                    delay: Math.random() * 2,
+                    ease: "easeOut"
+                  }}
+                />
+              ))}
+
+              {selectedVaper.type === 'video' ? (
+                <video 
+                  src={selectedVaper.src} 
+                  autoPlay 
+                  loop 
+                  playsInline 
+                  controls 
+                  className="max-w-full max-h-[85vh] object-contain rounded-2xl shadow-[0_0_50px_rgba(0,229,255,0.3)] pointer-events-auto" 
+                />
+              ) : (
+                <img 
+                  src={selectedVaper.src} 
+                  alt="Vaper Expandido" 
+                  className="max-w-full max-h-[85vh] object-contain rounded-2xl shadow-[0_0_50px_rgba(0,229,255,0.3)] pointer-events-auto" 
+                />
+              )}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* HEADER / NAV */}
       <nav className="fixed top-0 left-0 w-full z-50 p-4 md:p-6 mb-12 flex justify-between items-center mix-blend-difference">
@@ -402,7 +470,8 @@ export default function App() {
               whileHover={{ scale: 1.05 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="relative w-full sm:w-64 aspect-[3/4] rounded-2xl overflow-hidden bg-zinc-900 border border-zinc-800 shadow-[0_0_20px_rgba(0,0,0,0.5)] group"
+              onClick={() => setSelectedVaper(asset)}
+              className="relative w-full sm:w-64 aspect-[3/4] rounded-2xl overflow-hidden bg-zinc-900 border border-zinc-800 shadow-[0_0_20px_rgba(0,0,0,0.5)] group cursor-pointer"
             >
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity" />
               {asset.type === 'video' ? (
