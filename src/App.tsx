@@ -37,8 +37,8 @@ const IG_PICS = [
 ];
 
 const LOGOS = [
-  "/images/products/IMG_3930.png",
-  "/images/products/IMG_3931.png",
+  "/images/logos/IMG_3930.png",
+  "/images/logos/IMG_3931.png",
 ];
 
 const PRODUCT_PICS = [
