@@ -36,6 +36,13 @@ const IG_PICS = [
   "https://images.unsplash.com/photo-1514575110897-1253ff7b2cca?auto=format&fit=crop&q=80&w=800"
 ];
 
+const PRODUCT_PICS = [
+  "/images/products/IMG_3930.png",
+  "/images/products/IMG_3931.png",
+  "/images/products/IMG_3933.png",
+  "/images/products/IMG_3934.png",
+];
+
 export default function App() {
   return (
     <div className="bg-dark-bg min-h-screen text-white font-body selection:bg-miami-pink selection:text-white">
@@ -144,6 +151,38 @@ export default function App() {
                    <Star className="w-3 h-3 text-miami-yellow" />
                    Pregunta por los especiales del día
                  </p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* FEATURED PRODUCTS SECTION */}
+      <section className="py-20 px-4 md:px-8 max-w-7xl mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="font-display text-5xl md:text-6xl mb-4">MIRA LO QUE TENEMOS</h2>
+          <p className="text-gray-400 max-w-lg mx-auto">Nuestros productos y creaciones listos para acompañarte.</p>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+          {PRODUCT_PICS.map((img, i) => (
+            <motion.div 
+              key={i}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.15 }}
+              className="bg-zinc-900/60 rounded-[2rem] p-4 md:p-8 border border-zinc-800 shadow-2xl flex flex-col items-center justify-center group hover:border-miami-cyan hover:bg-zinc-800/80 transition-all cursor-pointer relative overflow-hidden"
+            >
+              {/* Resaltado trasero al hacer hover */}
+              <div className="absolute inset-0 bg-gradient-to-t from-miami-cyan/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              
+              <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden flex items-center justify-center">
+                 <img 
+                    src={img} 
+                    alt={`Producto Miami ${i + 1}`} 
+                    className="w-full h-full object-contain filter drop-shadow-[0_10px_20px_rgba(0,0,0,0.8)] group-hover:scale-110 group-hover:-translate-y-2 transition-all duration-500 ease-out"
+                 />
               </div>
             </motion.div>
           ))}
