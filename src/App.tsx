@@ -29,31 +29,31 @@ const MENU_ITEMS = [
 ];
 
 const LOCAL_VIDEOS = [
-  "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/main/public/video/SaveClip.App_AQN0lLNqJzNDRwX4smvLautLXcQIalxQUDSbab_5lxRyi3dblu6JrI85vu3yiuHIOvMVnFC_AEPiJaIN_GXN4xpqEoXFI473ZlFOxEA.mp4",
-  "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/main/public/video/SaveClip.App_AQOyK59IxCDvr5nX9XSWBQ_0qY7vkqeg-jF7WHmVQPDXVCY1SFXflm5EsM-LAPQ2dqErtoPiSqBezDJxR_JDC3SY9idNEih0u0ciBEw.mp4"
+  "/video/SaveClip.App_AQN0lLNqJzNDRwX4smvLautLXcQIalxQUDSbab_5lxRyi3dblu6JrI85vu3yiuHIOvMVnFC_AEPiJaIN_GXN4xpqEoXFI473ZlFOxEA.mp4",
+  "/video/SaveClip.App_AQOyK59IxCDvr5nX9XSWBQ_0qY7vkqeg-jF7WHmVQPDXVCY1SFXflm5EsM-LAPQ2dqErtoPiSqBezDJxR_JDC3SY9idNEih0u0ciBEw.mp4"
 ];
 
-const BRAND_LOGO = "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/main/public/images/logos/roboneo_image_with_aigc.png";
+const BRAND_LOGO = "/images/logos/roboneo_image_with_aigc.png";
 
 const FLAVOR_LOGOS = [
-  "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/main/public/images/logos/roboneo_image_with_aigc.png",
-  "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/main/public/images/products/IMG_3942.png",
+  "/images/logos/roboneo_image_with_aigc.png",
+  "/images/products/IMG_3942.png",
 ];
 
 const VAPERS_ASSETS: { type: 'image' | 'video', src: string }[] = [
-  { type: 'image', src: 'https://raw.githubusercontent.com/josesampayo01/Miami-granizados/main/public/images/vapers/IMG_3937.jpeg'},
-  { type: 'image', src: 'https://raw.githubusercontent.com/josesampayo01/Miami-granizados/main/public/images/vapers/IMG_3938.jpeg'},
-  { type: 'image', src: 'https://raw.githubusercontent.com/josesampayo01/Miami-granizados/main/public/images/vapers/IMG_3939.jpeg'},
-  { type: 'image', src: 'https://raw.githubusercontent.com/josesampayo01/Miami-granizados/main/public/images/vapers/IMG_3940.jpeg'},
-  { type: 'image', src: 'https://raw.githubusercontent.com/josesampayo01/Miami-granizados/main/public/images/vapers/IMG_3941.jpeg'}
+  { type: 'image', src: '/images/vapers/IMG_3937.jpeg'},
+  { type: 'image', src: '/images/vapers/IMG_3938.jpeg'},
+  { type: 'image', src: '/images/vapers/IMG_3939.jpeg'},
+  { type: 'image', src: '/images/vapers/IMG_3940.jpeg'},
+  { type: 'image', src: '/images/vapers/IMG_3941.jpeg'}
 ];
 
 const PROMOCIONES_PICS = [
-  "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/main/public/images/promociones/IMG_3933.jpeg",
-  "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/main/public/images/promociones/IMG_3934.jpeg",
+  "/images/promociones/IMG_3933.jpeg",
+  "/images/promociones/IMG_3934.jpeg",
 ];
 
-const SNOOP_IMAGE = "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/main/public/images/Snoop/IMG_3942.png"; // <-- La ruta de la imagen de Snoop Dogg, asegúrate de subir la imagen en public/images/Snoop/IMG_3942.png
+const SNOOP_IMAGE = "/images/Snoop/IMG_3942.png"; // <-- La ruta de la imagen de Snoop Dogg, asegúrate de subir la imagen en public/images/Snoop/IMG_3942.png
 
 function AgeVerification({ onVerify }: { onVerify: () => void }) {
   const [scanning, setScanning] = useState(true);
