@@ -62,101 +62,164 @@ function AgeVerification({ onVerify }: { onVerify: () => void }) {
     // Simulate face scan
     const timer = setTimeout(() => {
       setScanning(false);
-    }, 4000);
+    }, 4500);
     return () => clearTimeout(timer);
   }, []);
 
   return (
-    <div className="fixed inset-0 z-[100] bg-black/95 flex flex-col items-center justify-center p-4 backdrop-blur-md">
+    <div className="fixed inset-0 z-[100] bg-black/95 flex flex-col items-center justify-center p-4 backdrop-blur-xl">
       <motion.div 
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        className="w-full max-w-md bg-zinc-900 border border-zinc-800 rounded-3xl p-8 flex flex-col items-center shadow-2xl relative overflow-hidden"
+        initial={{ opacity: 0, scale: 0.9, y: 20 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+        className="w-full max-w-md bg-zinc-950/80 border border-zinc-800/80 rounded-[2rem] p-8 flex flex-col items-center shadow-2xl relative overflow-hidden backdrop-blur-2xl"
       >
-        <h2 className="font-display text-3xl text-white mb-2 text-center tracking-wide">VERIFICACIÓN</h2>
-        <p className="text-zinc-400 text-sm mb-8 text-center uppercase tracking-widest font-bold font-mono">Control de acceso</p>
-
-        {/* Face Scan / Distracción Psicológica Area */}
-        <div className="relative w-full max-w-[280px] aspect-video rounded-2xl overflow-hidden mb-8 border-4 border-zinc-800 shadow-[0_0_40px_rgba(255,0,0,0.3)]">
-           <motion.img 
-             animate={scanning ? {
-               scale: [1, 1.2, 1.1, 1.3, 1],
-               filter: ['hue-rotate(0deg) contrast(1)', 'hue-rotate(90deg) contrast(1.5)', 'hue-rotate(270deg) contrast(2)', 'hue-rotate(360deg) contrast(1)'],
-               x: [0, -5, 5, -2, 2, 0],
-               y: [0, 5, -5, 2, -2, 0]
-             } : {
-               scale: 1,
-               filter: 'hue-rotate(0deg) contrast(1)',
-             }}
-             transition={scanning ? { duration: 0.5, repeat: Infinity, repeatType: "mirror" } : { duration: 0.3 }}
-             src="https://media.giphy.com/media/TJawtKM6OCKkvwCIqX/giphy.gif" 
-             alt="Snoop Scan Focus" 
-             className="w-full h-full object-cover opacity-90"
-           />
-           
-           {/* Dinámicas de Distracción Psicológica */}
-           {scanning && (
-             <motion.div 
-               animate={{ opacity: [0, 1, 0] }}
-               transition={{ duration: 0.1, repeat: Infinity }}
-               className="absolute inset-0 bg-red-600 mix-blend-overlay z-0"
-             />
-           )}
-           
-           {/* Scanning Line */}
-           {scanning && (
-             <motion.div 
-               animate={{ top: ['0%', '100%', '0%'] }}
-               transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
-               className="absolute left-0 right-0 h-2 bg-miami-cyan shadow-[0_0_30px_#00E5FF] z-10"
-             />
-           )}
-           
-           {/* Focus reticle corners */}
-           <div className="absolute top-2 left-2 w-4 h-4 border-t-2 border-l-2 border-miami-cyan opacity-70"></div>
-           <div className="absolute top-2 right-2 w-4 h-4 border-t-2 border-r-2 border-miami-cyan opacity-70"></div>
-           <div className="absolute bottom-2 left-2 w-4 h-4 border-b-2 border-l-2 border-miami-cyan opacity-70"></div>
-           <div className="absolute bottom-2 right-2 w-4 h-4 border-b-2 border-r-2 border-miami-cyan opacity-70"></div>
-           
-           {/* Cyber Grid */}
-           <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-20 z-0 mix-blend-overlay"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-miami-cyan/5 to-miami-pink/5 z-0" />
+        
+        {/* Top Badges & Titles */}
+        <div className="z-10 w-full flex justify-center mb-6 relative">
+          <div className="flex items-center gap-2">
+            <motion.div 
+              animate={{ opacity: [0.5, 1, 0.5] }} 
+              transition={{ duration: 2, repeat: Infinity }}
+            >
+              <img src={BRAND_LOGO} alt="Miami Logo" className="w-10 h-10 rounded-full border border-miami-cyan/30 shadow-[0_0_10px_rgba(0,229,255,0.2)]" />
+            </motion.div>
+            <div>
+              <h2 className="font-display text-2xl text-white tracking-widest leading-none">VERIFICACIÓN</h2>
+              <p className="text-miami-pink text-[10px] uppercase tracking-[0.3em] font-bold font-mono">Control de acceso</p>
+            </div>
+          </div>
         </div>
 
-        <div className="h-28 flex items-center justify-center w-full relative">
+        {/* Face Scan / Distracción Psicológica Area */}
+        <div className="relative w-full aspect-square max-w-full sm:max-w-xs rounded-[1.5rem] overflow-hidden mb-6 border-2 border-zinc-800 z-10 shadow-[0_0_50px_rgba(255,0,128,0.15)] bg-black">
+           <motion.img 
+             animate={scanning ? {
+               scale: [1.02, 1.08, 1.05, 1.1, 1.02],
+               filter: [
+                 'hue-rotate(0deg) contrast(1.1) brightness(1)', 
+                 'hue-rotate(90deg) contrast(1.5) brightness(1.2)', 
+                 'hue-rotate(180deg) contrast(1.2) brightness(0.8)', 
+                 'hue-rotate(270deg) contrast(1.8) brightness(1.5)', 
+                 'hue-rotate(360deg) contrast(1.1) brightness(1)'
+               ],
+               x: [0, -3, 3, -1, 1, 0],
+               y: [0, 3, -3, 1, -1, 0]
+             } : {
+               scale: 1,
+               filter: 'hue-rotate(0deg) contrast(1.1) brightness(0.9)',
+               x: 0,
+               y: 0
+             }}
+             transition={scanning ? { duration: 0.8, repeat: Infinity, repeatType: "mirror" } : { duration: 0.8, type: "spring" }}
+             src="https://media.giphy.com/media/TJawtKM6OCKkvwCIqX/giphy.gif" 
+             alt="Snoop Scan Focus" 
+             className="w-full h-full object-cover opacity-90 mix-blend-screen"
+           />
+           
+           {/* Dinámicas de Distracción Psicológica (Overlay) */}
+           <AnimatePresence>
+             {scanning && (
+               <>
+                 <motion.div 
+                   animate={{ opacity: [0, 0.4, 0] }}
+                   transition={{ duration: 0.15, repeat: Infinity }}
+                   className="absolute inset-0 bg-red-600 mix-blend-overlay z-10"
+                 />
+                 <motion.div 
+                   animate={{ opacity: [0, 0.2, 0] }}
+                   transition={{ duration: 0.3, repeat: Infinity, repeatType: 'reverse' }}
+                   className="absolute inset-0 bg-miami-cyan mix-blend-color-dodge z-10"
+                 />
+                 {/* Glitch textual */}
+                 <motion.div
+                   className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center z-20 mix-blend-difference pointer-events-none"
+                   animate={{ 
+                     opacity: [0, 1, 0, 1, 0],
+                     scale: [1, 1.1, 1, 1.2, 1],
+                     skewX: [0, -20, 20, -10, 0]
+                   }}
+                   transition={{ duration: 0.2, repeat: Infinity, repeatDelay: 1 }}
+                 >
+                   <span className="font-display text-4xl sm:text-5xl text-white opacity-50 tracking-widest">18+ ONLY</span>
+                 </motion.div>
+               </>
+             )}
+           </AnimatePresence>
+
+           {/* Parental Advisory Badge Overlay */}
+           <motion.div 
+             initial={{ opacity: 0, y: 20 }}
+             animate={{ opacity: 1, y: 0 }}
+             transition={{ delay: 0.5 }}
+             className="absolute bottom-4 left-4 z-20 pointer-events-none"
+           >
+             <div className="bg-white px-2 py-1 flex flex-col items-center justify-center border-2 border-black w-20 sm:w-24 shadow-2xl">
+               <span className="text-black font-black text-[8px] sm:text-[10px] uppercase leading-none tracking-tight">Parental</span>
+               <span className="text-black font-black text-[12px] sm:text-[14px] uppercase leading-none tracking-tight mt-[1px]">Advisory</span>
+               <div className="w-full h-[2px] bg-black my-[2px]"></div>
+               <span className="text-black font-bold text-[6px] sm:text-[8px] uppercase leading-none tracking-tight">Explicit Content</span>
+             </div>
+           </motion.div>
+           
+           {/* Scanning Line */}
+           <AnimatePresence>
+             {scanning && (
+               <motion.div 
+                 animate={{ top: ['0%', '100%', '0%'] }}
+                 transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                 className="absolute left-0 right-0 h-[2px] bg-white shadow-[0_0_20px_4px_#00E5FF,0_0_40px_8px_#FF2A80] z-20"
+               />
+             )}
+           </AnimatePresence>
+           
+           {/* Focus reticle corners */}
+           <div className="absolute top-3 left-3 w-6 h-6 border-t-2 border-l-2 border-miami-pink opacity-80 z-20"></div>
+           <div className="absolute top-3 right-3 w-6 h-6 border-t-2 border-r-2 border-miami-cyan opacity-80 z-20"></div>
+           <div className="absolute bottom-3 left-3 w-6 h-6 border-b-2 border-l-2 border-miami-cyan opacity-80 z-20"></div>
+           <div className="absolute bottom-3 right-3 w-6 h-6 border-b-2 border-r-2 border-miami-pink opacity-80 z-20"></div>
+           
+           {/* Cyber Grid */}
+           <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-30 z-10 mix-blend-overlay"></div>
+        </div>
+
+        <div className="h-28 flex items-center justify-center w-full z-10">
           {scanning ? (
             <div className="flex flex-col items-center">
               <motion.div 
                 animate={{ rotate: 360, scale: [1, 1.2, 1] }}
-                transition={{ duration: 0.5, repeat: Infinity }}
-                className="w-10 h-10 border-4 border-x-miami-cyan border-y-miami-pink rounded-full mb-2"
+                transition={{ duration: 0.6, repeat: Infinity, ease: 'linear' }}
+                className="w-12 h-12 border-4 border-t-miami-cyan border-b-miami-pink border-l-transparent border-r-transparent rounded-full mb-3 shadow-[0_0_15px_rgba(255,42,128,0.5)]"
               />
               <motion.div
-                animate={{ opacity: [1, 0, 1] }}
-                transition={{ duration: 0.2, repeat: Infinity }}
+                animate={{ opacity: [1, 0.4, 1] }}
+                transition={{ duration: 0.1, repeat: Infinity }}
+                className="text-center"
               >
-                <p className="text-red-500 font-display tracking-widest text-lg drop-shadow-[0_0_10px_rgba(255,0,0,0.8)]">DISTORSIÓN NEURONAL ACTIVA</p>
-                <p className="text-zinc-300 font-mono text-xs opacity-50">Si eres menor... cierra los ojos...</p>
+                <p className="text-miami-cyan font-display tracking-[0.2em] text-lg drop-shadow-[0_0_8px_rgba(0,229,255,0.8)]">ANALIZANDO FRECUENCIA</p>
+                <p className="text-zinc-400 font-mono text-[10px] uppercase tracking-widest mt-1">Sintonizando vibras (+18) ...</p>
               </motion.div>
             </div>
           ) : (
             <motion.div 
-              initial={{ opacity: 0, y: 10 }}
+              initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               className="text-center w-full"
             >
-              <p className="text-zinc-300 mb-6 text-sm font-medium">Sitio con contenido para adultos (+18).<br/>¿Eres mayor de edad?</p>
-              <div className="flex gap-4 justify-center w-full">
+              <p className="text-zinc-300 mb-5 text-sm font-light">Este sitio contiene experiencias para adultos.<br/>¿Confirmas tu mayoría de edad?</p>
+              <div className="flex gap-3 justify-center w-full">
                 <button 
                   onClick={onVerify}
-                  className="flex-1 bg-miami-cyan text-black font-bold py-3 px-4 rounded-xl hover:bg-white transition-all transform hover:scale-105 active:scale-95 text-sm tracking-wider"
+                  className="flex-1 bg-white text-black font-black py-4 px-4 rounded-xl hover:bg-miami-cyan transition-all transform hover:-translate-y-1 active:scale-95 text-xs tracking-[0.1em] uppercase shadow-[0_0_20px_rgba(255,255,255,0.2)]"
                 >
-                  SÍ, SOY MAYOR
+                  SÍ, ENTRAR
                 </button>
                 <button 
                   onClick={() => window.location.href = "https://www.google.com"}
-                  className="flex-1 bg-zinc-800 text-zinc-400 font-bold py-3 px-4 rounded-xl hover:bg-zinc-700 hover:text-white transition-all text-sm tracking-wider"
+                  className="flex-1 bg-zinc-900 border border-zinc-700 text-zinc-400 font-bold py-4 px-4 rounded-xl hover:bg-zinc-800 hover:text-white transition-all text-xs tracking-[0.1em] uppercase"
                 >
-                  SALIR
+                  NO SOY MAYOR
                 </button>
               </div>
             </motion.div>
