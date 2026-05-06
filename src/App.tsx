@@ -54,7 +54,7 @@ const PROMOCIONES_PICS = [
   "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/main/public/images/promociones/roboneo_image_with_aigc.png",
 ];
 
-
+const SNOOP_IMAGE = "/images/Snoop/IMG_3942.png"; // <-- La ruta de la imagen de Snoop Dogg, asegúrate de subir la imagen en public/images/Snoop/IMG_3942.png
 
 function AgeVerification({ onVerify }: { onVerify: () => void }) {
   const [scanning, setScanning] = useState(true);
@@ -114,7 +114,7 @@ function AgeVerification({ onVerify }: { onVerify: () => void }) {
                y: 0
              }}
              transition={scanning ? { duration: 0.8, repeat: Infinity, repeatType: "mirror" } : { duration: 0.8, type: "spring" }}
-             src="https://raw.githubusercontent.com/josesampayo01/Miami-granizados/main/public/images/Snoop/IMG_3942.png" 
+             src={SNOOP_IMAGE} 
              alt="Snoop Scan Focus" 
              className="w-full h-full object-cover opacity-90 mix-blend-screen"
            />
