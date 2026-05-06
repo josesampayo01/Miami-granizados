@@ -167,7 +167,7 @@ export default function App() {
                   className="w-full h-[600px] rounded-3xl"
                   frameBorder="0" 
                   scrolling="no" 
-                  allowTransparency
+                  allowtransparency="true"
                 ></iframe>
              </div>
         </div>
