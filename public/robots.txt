@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://josesampayo21222.github.io/Miami-granizados/sitemap.xml
