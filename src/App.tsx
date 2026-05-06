@@ -27,14 +27,7 @@ const MENU_ITEMS = [
   }
 ];
 
-const IG_PICS = [
-  "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&q=80&w=800",
-  "https://images.unsplash.com/photo-1536599018102-9f803c140fc1?auto=format&fit=crop&q=80&w=800",
-  "https://images.unsplash.com/photo-1544145945-f9042519a771?auto=format&fit=crop&q=80&w=800",
-  "https://images.unsplash.com/photo-1601332822459-f8319fbf3b36?auto=format&fit=crop&q=80&w=800",
-  "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&q=80&w=800",
-  "https://images.unsplash.com/photo-1514575110897-1253ff7b2cca?auto=format&fit=crop&q=80&w=800"
-];
+
 
 const BRAND_LOGO = "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/refs/heads/main/public/images/logos/IMG_3930.jpeg";
 
@@ -246,30 +239,7 @@ export default function App() {
              </div>
         </div>
 
-        {/* Diagonal photo grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 px-4 md:px-8 max-w-7xl mx-auto -rotate-2 transform scale-105 mb-16">
-          {IG_PICS.map((img, i) => (
-            <motion.a 
-              href="https://www.instagram.com/miamicocktailss?igsh=Y3A0MHp2enkza3Ry"
-              target="_blank"
-              rel="noreferrer"
-              key={i}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              whileHover={{ 
-                 scale: 1.03, 
-                 zIndex: 10,
-                 rotate: i % 2 === 0 ? 1 : -1,
-                 boxShadow: "0px 10px 20px rgba(0,0,0,0.4)" 
-               }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className={`block rounded-2xl overflow-hidden aspect-[4/5] bg-zinc-900 border-2 border-transparent hover:border-miami-pink transition-all ${i % 2 === 0 ? 'translate-y-8' : ''}`}
-            >
-              <img src={img} alt="Miami Granizados feed" className="w-full h-full object-cover" />
-            </motion.a>
-          ))}
-        </div>
+
       </section>
 
       {/* PROMOCIONES SECTION (Moved to the bottom in blur mode) */}
