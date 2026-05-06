@@ -71,6 +71,12 @@ export default function App() {
             <span className="text-[12vw] md:text-[8vw] text-miami-cyan uppercase relative z-10 glow-cyan">GRANIZADOS</span>
           </h1>
           
+          <div className="absolute -top-4 -right-4 md:right-10 rotate-12">
+             <span className="inline-block bg-miami-pink text-white font-display px-4 py-2 text-xl md:text-3xl uppercase tracking-wider transform shadow-lg border-2 border-white">
+                ¡Puesto pal parche!
+             </span>
+          </div>
+
           <motion.p 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -199,7 +205,7 @@ export default function App() {
           
           <div className="bg-zinc-900/50 p-8 rounded-3xl border border-zinc-800 text-center">
              <h3 className="font-display inline-block text-3xl mb-4 px-4 py-2 bg-miami-pink text-white uppercase transform -rotate-2">
-               ¡Plan Perfecto!
+               ¡Puesto pal parche!
              </h3>
              <p className="text-zinc-400 font-light mb-8">
                Música, amigos, y el mejor ambiente de la ciudad. Ven a disfrutar de un granizado refrescante o explora nuestra variedad de vapers.
