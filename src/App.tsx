@@ -37,8 +37,8 @@ const IG_PICS = [
 ];
 
 const LOGOS = [
-  "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/refs/heads/main/public/images/Logo/IMG_3930.png",
-  "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/refs/heads/main/public/images/Logo/IMG_3931.png",
+  "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/refs/heads/main/public/images/logos/IMG_3931.jpeg",
+  "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/refs/heads/main/public/images/logos/IMG_3936.png",
 ];
 
 const PROMOCIONES_PICS = [
