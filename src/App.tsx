@@ -51,10 +51,9 @@ const VAPERS_ASSETS: { type: 'image' | 'video', src: string }[] = [
 const PROMOCIONES_PICS = [
   "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/main/public/images/promociones/IMG_3933.jpeg",
   "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/main/public/images/promociones/IMG_3934.jpeg",
-  "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/main/public/images/promociones/roboneo_image_with_aigc.png",
 ];
 
-const SNOOP_IMAGE = "/images/Snoop/IMG_3942.png"; // <-- La ruta de la imagen de Snoop Dogg, asegúrate de subir la imagen en public/images/Snoop/IMG_3942.png
+const SNOOP_IMAGE = "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/main/public/images/Snoop/IMG_3942.png"; // <-- La ruta de la imagen de Snoop Dogg, asegúrate de subir la imagen en public/images/Snoop/IMG_3942.png
 
 function AgeVerification({ onVerify }: { onVerify: () => void }) {
   const [scanning, setScanning] = useState(true);
