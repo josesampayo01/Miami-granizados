@@ -11,9 +11,9 @@ const MENU_ITEMS = [
     category: 'Granizados',
     icon: <CupSoda className="w-8 h-8 text-miami-cyan" />,
     items: [
-      { name: 'Miami Vice', desc: 'Fresa y Piña Colada', price: '$12K' },
-      { name: 'Tropical Blue', desc: 'Maracuyá, curazao azul, limón', price: '$10K' },
-      { name: 'Brisa de Mango', desc: 'Mango biche, sal, limón y tajín', price: '$10K' },
+      { name: 'Manzana Verde', desc: 'Sabor súper refrescante', price: '$10K' },
+      { name: 'Malibu', desc: 'Sabor tropical', price: '$10K' },
+      { name: 'Fresa Bom Bom', desc: 'Dulce y delicioso', price: '$10K' },
     ]
   },
   {
