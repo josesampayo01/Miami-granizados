@@ -29,28 +29,29 @@ const MENU_ITEMS = [
 ];
 
 const LOCAL_VIDEOS = [
-  "/video/video1.mp4",
-  // Sube más videos a la carpeta public/video y agrégalos aquí si es necesario
+  "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/main/public/video/SaveClip.App_AQN0lLNqJzNDRwX4smvLautLXcQIalxQUDSbab_5lxRyi3dblu6JrI85vu3yiuHIOvMVnFC_AEPiJaIN_GXN4xpqEoXFI473ZlFOxEA.mp4",
+  "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/main/public/video/SaveClip.App_AQOyK59IxCDvr5nX9XSWBQ_0qY7vkqeg-jF7WHmVQPDXVCY1SFXflm5EsM-LAPQ2dqErtoPiSqBezDJxR_JDC3SY9idNEih0u0ciBEw.mp4"
 ];
 
-const BRAND_LOGO = "/roboneo_image_with_aigc.png";
+const BRAND_LOGO = "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/main/public/images/logos/roboneo_image_with_aigc.png";
 
 const FLAVOR_LOGOS = [
-  "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/refs/heads/main/public/images/logos/IMG_3931.jpeg",
-  "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/refs/heads/main/public/images/logos/IMG_3930.jpeg",
+  "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/main/public/images/logos/roboneo_image_with_aigc.png",
+  "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/main/public/images/products/IMG_3942.png",
 ];
 
 const VAPERS_ASSETS: { type: 'image' | 'video', src: string }[] = [
-  // Sube tus recursos a la carpeta /public/vapers/
-  // Ejemplo de imagen: { type: 'image', src: '/vapers/vaper1.jpeg' }
-  // Ejemplo de video: { type: 'video', src: '/vapers/video1.mp4' }
-  // Puedes agregar los tuyos abajo cuando los subas al proyecto:
-  // { type: 'image', src: '/vapers/tu_imagen_aqui.jpg' }
+  { type: 'image', src: 'https://raw.githubusercontent.com/josesampayo01/Miami-granizados/main/public/images/vapers/IMG_3937.jpeg'},
+  { type: 'image', src: 'https://raw.githubusercontent.com/josesampayo01/Miami-granizados/main/public/images/vapers/IMG_3938.jpeg'},
+  { type: 'image', src: 'https://raw.githubusercontent.com/josesampayo01/Miami-granizados/main/public/images/vapers/IMG_3939.jpeg'},
+  { type: 'image', src: 'https://raw.githubusercontent.com/josesampayo01/Miami-granizados/main/public/images/vapers/IMG_3940.jpeg'},
+  { type: 'image', src: 'https://raw.githubusercontent.com/josesampayo01/Miami-granizados/main/public/images/vapers/IMG_3941.jpeg'}
 ];
 
 const PROMOCIONES_PICS = [
   "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/main/public/images/promociones/IMG_3933.jpeg",
   "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/main/public/images/promociones/IMG_3934.jpeg",
+  "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/main/public/images/promociones/roboneo_image_with_aigc.png",
 ];
 
 
@@ -113,7 +114,7 @@ function AgeVerification({ onVerify }: { onVerify: () => void }) {
                y: 0
              }}
              transition={scanning ? { duration: 0.8, repeat: Infinity, repeatType: "mirror" } : { duration: 0.8, type: "spring" }}
-             src="https://media.giphy.com/media/TJawtKM6OCKkvwCIqX/giphy.gif" 
+             src="https://raw.githubusercontent.com/josesampayo01/Miami-granizados/main/public/images/Snoop/IMG_3942.png" 
              alt="Snoop Scan Focus" 
              className="w-full h-full object-cover opacity-90 mix-blend-screen"
            />
