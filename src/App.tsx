@@ -38,6 +38,11 @@ const IG_PICS = [
 
 const BRAND_LOGO = "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/refs/heads/main/public/images/logos/IMG_3930.jpeg";
 
+const FLAVOR_LOGOS = [
+  "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/refs/heads/main/public/images/logos/IMG_3931.jpeg",
+  "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/refs/heads/main/public/images/logos/IMG_3936.png",
+];
+
 const VAPERS_PICS: string[] = [
   "https://share.google/QylJ4MRJ6YQkj3SJ3",
   "https://share.google/1PF2LtkQy9lQpxB8J",
@@ -122,8 +127,26 @@ export default function App() {
       </div>
 
       {/* MENU SECTION */}
-      <section className="py-24 px-4 md:px-8 max-w-6xl mx-auto">
-        <div className="text-center mb-16">
+      <section className="py-24 px-4 md:px-8 max-w-6xl mx-auto relative mt-10">
+        
+        {/* Floating Brand Logos Decoration */}
+        <motion.div 
+          animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }} 
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute -top-10 left-0 md:-left-10 w-24 h-24 md:w-40 md:h-40 xl:w-48 xl:h-48 z-0 opacity-40 pointer-events-none"
+        >
+          <img src={FLAVOR_LOGOS[0]} alt="Miami Decoration" className="w-full h-full object-contain filter drop-shadow-2xl" />
+        </motion.div>
+        
+        <motion.div 
+          animate={{ y: [0, 30, 0], rotate: [0, -10, 0] }} 
+          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          className="absolute bottom-0 right-0 md:-right-10 w-24 h-24 md:w-32 md:h-32 xl:w-40 xl:h-40 z-0 opacity-40 pointer-events-none"
+        >
+          <img src={FLAVOR_LOGOS[1]} alt="Miami Decoration" className="w-full h-full object-contain filter drop-shadow-2xl" />
+        </motion.div>
+
+        <div className="text-center mb-16 relative z-10">
           <h2 className="font-display text-6xl md:text-7xl mb-4">NUESTRO MENÚ</h2>
           <p className="text-gray-400 max-w-lg mx-auto">Preparados al momento, con los mejores ingredientes y un toque único que no encontrarás en ningún otro lugar en Magangué.</p>
         </div>
@@ -174,24 +197,27 @@ export default function App() {
           <p className="text-gray-400 max-w-lg mx-auto">Explora nuestra colección de vapers y esencias premium.</p>
         </div>
 
-        <div className="flex flex-wrap justify-center items-center gap-12 md:gap-24 max-w-4xl mx-auto">
-          {VAPERS_PICS.length > 0 ? VAPERS_PICS.map((img, i) => (
-            <motion.div 
+        <div className="flex flex-wrap justify-center items-center gap-12 md:gap-16 max-w-5xl mx-auto">
+          {VAPERS_PICS.length > 0 ? VAPERS_PICS.map((link, i) => (
+            <motion.a 
+              href={link}
+              target="_blank"
+              rel="noreferrer"
               key={i}
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
+              whileHover={{ y: -10 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.15 }}
               className="flex items-center justify-center group cursor-pointer"
             >
-              <div className="relative w-48 h-48 md:w-64 md:h-64 flex items-center justify-center bg-zinc-900/60 rounded-[2rem] p-6 shadow-xl border border-zinc-800 hover:border-miami-pink/50 transition-colors">
-                 <img 
-                    src={img} 
-                    alt={`Vaper Miami ${i + 1}`} 
-                    className="w-full h-full object-contain filter drop-shadow-[0_0_15px_rgba(255,255,255,0.15)] group-hover:drop-shadow-[0_0_25px_rgba(255,42,128,0.5)] group-hover:scale-105 transition-all duration-500 ease-out"
-                 />
+              <div className="relative w-48 h-64 md:w-56 md:h-72 flex flex-col items-center justify-center bg-zinc-900 overflow-hidden rounded-[2rem] p-6 shadow-xl border border-zinc-800 hover:border-miami-cyan/50 transition-colors">
+                 <div className="absolute inset-0 bg-gradient-to-tr from-miami-cyan/20 to-miami-pink/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                 <Wind className="w-16 h-16 text-zinc-600 group-hover:text-white transition-colors mb-4 relative z-10" />
+                 <span className="font-display text-xl text-zinc-400 group-hover:text-white transition-colors relative z-10">Ver Vaper {i + 1}</span>
+                 <span className="text-xs text-miami-pink mt-2 font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">Abrir Enlace</span>
               </div>
-            </motion.div>
+            </motion.a>
           )) : (
             <p className="text-zinc-600 italic">Aquí aparecerán tus vapers...</p>
           )}
