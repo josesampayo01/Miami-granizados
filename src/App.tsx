@@ -182,10 +182,10 @@ export default function App() {
           <div>
             <h2 className="font-display text-5xl text-stroke mb-8">VISÍTANOS</h2>
             <div className="space-y-4">
-              <div className="flex items-center gap-4 text-zinc-300 hover:text-miami-cyan transition-colors">
+              <a href="https://www.google.com/search?q=Miami%20Granizados&kgmid=%2Fg%2F11z9x2r8qs" target="_blank" rel="noreferrer" className="flex items-center gap-4 text-zinc-300 hover:text-miami-cyan transition-colors">
                 <MapPin className="w-6 h-6 shrink-0" />
-                <p>Magangué, Bolívar<br/><span className="text-sm opacity-60">Visita nuestro perfil de Instagram para la ubicación exacta.</span></p>
-              </div>
+                <p>Magangué, Bolívar<br/><span className="text-sm opacity-60">Haz clic aquí para ver nuestra ubicación en Google Maps.</span></p>
+              </a>
               <a href="https://www.instagram.com/miamicocktailss?igsh=Y3A0MHp2enkza3Ry" target="_blank" rel="noreferrer" className="flex items-center gap-4 text-zinc-300 hover:text-miami-pink transition-colors">
                 <Instagram className="w-6 h-6 shrink-0" />
                 <p>@miamicocktailss</p>
