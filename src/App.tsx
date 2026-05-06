@@ -33,7 +33,7 @@ const LOCAL_VIDEOS = [
   // Sube más videos a la carpeta public/video y agrégalos aquí si es necesario
 ];
 
-const BRAND_LOGO = "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/refs/heads/main/public/images/logos/IMG_3930.jpeg";
+const BRAND_LOGO = "/roboneo_image_with_aigc.png";
 
 const FLAVOR_LOGOS = [
   "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/refs/heads/main/public/images/logos/IMG_3931.jpeg",
@@ -143,6 +143,23 @@ function AgeVerification({ onVerify }: { onVerify: () => void }) {
                    transition={{ duration: 0.2, repeat: Infinity, repeatDelay: 1 }}
                  >
                    <span className="font-display text-4xl sm:text-5xl text-white opacity-50 tracking-widest">18+ ONLY</span>
+                 </motion.div>
+                 <motion.div
+                   className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 z-15 pointer-events-none mix-blend-screen opacity-70 flex items-center justify-center filter drop-shadow-[0_0_20px_rgba(255,42,128,0.8)]"
+                   animate={{
+                     scale: [0.8, 1.1, 0.9, 1.3, 0.8],
+                     skewX: [0, -10, 10, -5, 0],
+                     filter: [
+                       'hue-rotate(0deg) contrast(1.5)', 
+                       'hue-rotate(90deg) contrast(2) invert(1)', 
+                       'hue-rotate(180deg) contrast(1.2)', 
+                       'hue-rotate(270deg) contrast(1.8) invert(1)', 
+                       'hue-rotate(0deg) contrast(1.5)'
+                     ]
+                   }}
+                   transition={{ duration: 0.4, repeat: Infinity, repeatType: 'reverse' }}
+                 >
+                   <img src={BRAND_LOGO} alt="Roboneo Logo" className="w-full h-full object-contain rounded-xl mix-blend-color-dodge transition-all" />
                  </motion.div>
                </>
              )}
