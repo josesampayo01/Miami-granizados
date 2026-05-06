@@ -38,9 +38,11 @@ const IG_PICS = [
 
 const BRAND_LOGO = "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/refs/heads/main/public/images/logos/IMG_3930.jpeg";
 
-const LOGOS = [
-  "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/refs/heads/main/public/images/logos/IMG_3931.jpeg",
-  "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/refs/heads/main/public/images/logos/IMG_3936.png",
+const VAPERS_PICS: string[] = [
+  "https://share.google/QylJ4MRJ6YQkj3SJ3",
+  "https://share.google/1PF2LtkQy9lQpxB8J",
+  "https://share.google/ikGnLlRO37GlhaJVa",
+  "https://share.google/1iykEtYUkTEqNrjjs",
 ];
 
 const PROMOCIONES_PICS = [
@@ -165,15 +167,15 @@ export default function App() {
         </div>
       </section>
 
-      {/* LOGOS / MARCAS SECTION */}
+      {/* VAPERS SECTION */}
       <section className="py-20 px-4 md:px-8 max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="font-display text-5xl md:text-6xl mb-4 text-miami-cyan">NUESTRAS MARCAS</h2>
-          <p className="text-gray-400 max-w-lg mx-auto">El distintivo de nuestra calidad y sabor inconfundible.</p>
+          <h2 className="font-display text-5xl md:text-6xl mb-4 text-miami-cyan">NUESTROS VAPERS</h2>
+          <p className="text-gray-400 max-w-lg mx-auto">Explora nuestra colección de vapers y esencias premium.</p>
         </div>
 
         <div className="flex flex-wrap justify-center items-center gap-12 md:gap-24 max-w-4xl mx-auto">
-          {LOGOS.map((img, i) => (
+          {VAPERS_PICS.length > 0 ? VAPERS_PICS.map((img, i) => (
             <motion.div 
               key={i}
               initial={{ opacity: 0, scale: 0.9 }}
@@ -182,15 +184,17 @@ export default function App() {
               transition={{ delay: i * 0.15 }}
               className="flex items-center justify-center group cursor-pointer"
             >
-              <div className="relative w-32 h-32 md:w-48 md:h-48 flex items-center justify-center">
+              <div className="relative w-48 h-48 md:w-64 md:h-64 flex items-center justify-center bg-zinc-900/60 rounded-[2rem] p-6 shadow-xl border border-zinc-800 hover:border-miami-pink/50 transition-colors">
                  <img 
                     src={img} 
-                    alt={`Logo Miami ${i + 1}`} 
+                    alt={`Vaper Miami ${i + 1}`} 
                     className="w-full h-full object-contain filter drop-shadow-[0_0_15px_rgba(255,255,255,0.15)] group-hover:drop-shadow-[0_0_25px_rgba(255,42,128,0.5)] group-hover:scale-105 transition-all duration-500 ease-out"
                  />
               </div>
             </motion.div>
-          ))}
+          )) : (
+            <p className="text-zinc-600 italic">Aquí aparecerán tus vapers...</p>
+          )}
         </div>
       </section>
 
