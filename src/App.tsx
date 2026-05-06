@@ -40,11 +40,12 @@ const FLAVOR_LOGOS = [
   "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/refs/heads/main/public/images/logos/IMG_3930.jpeg",
 ];
 
-const VAPERS_PICS: string[] = [
-  "https://share.google/QylJ4MRJ6YQkj3SJ3",
-  "https://share.google/1PF2LtkQy9lQpxB8J",
-  "https://share.google/ikGnLlRO37GlhaJVa",
-  "https://share.google/1iykEtYUkTEqNrjjs",
+const VAPERS_ASSETS: { type: 'image' | 'video', src: string }[] = [
+  // Sube tus recursos a la carpeta /public/vapers/
+  // Ejemplo de imagen: { type: 'image', src: '/vapers/vaper1.jpeg' }
+  // Ejemplo de video: { type: 'video', src: '/vapers/video1.mp4' }
+  // Puedes agregar los tuyos abajo cuando los subas al proyecto:
+  // { type: 'image', src: '/vapers/tu_imagen_aqui.jpg' }
 ];
 
 const PROMOCIONES_PICS = [
@@ -52,12 +53,7 @@ const PROMOCIONES_PICS = [
   "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/main/public/images/promociones/IMG_3934.jpeg",
 ];
 
-const DESTILADOS_PICS = [
-  "https://images.unsplash.com/photo-1569937746599-5ea0dc90db67?q=80&w=800",
-  "https://images.unsplash.com/photo-1614316654215-64ce7807ecad?q=80&w=800",
-  "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=800",
-  "https://images.unsplash.com/photo-1527281400683-1aae777175f8?q=80&w=800",
-];
+
 
 function AgeVerification({ onVerify }: { onVerify: () => void }) {
   const [scanning, setScanning] = useState(true);
@@ -80,20 +76,39 @@ function AgeVerification({ onVerify }: { onVerify: () => void }) {
         <h2 className="font-display text-3xl text-white mb-2 text-center tracking-wide">VERIFICACIÓN</h2>
         <p className="text-zinc-400 text-sm mb-8 text-center uppercase tracking-widest font-bold font-mono">Control de acceso</p>
 
-        {/* Face Scan Area */}
-        <div className="relative w-48 h-48 rounded-2xl overflow-hidden mb-8 border-2 border-zinc-800 shadow-[0_0_30px_rgba(0,0,0,0.5)]">
-           <img 
+        {/* Face Scan / Distracción Psicológica Area */}
+        <div className="relative w-full max-w-[280px] aspect-video rounded-2xl overflow-hidden mb-8 border-4 border-zinc-800 shadow-[0_0_40px_rgba(255,0,0,0.3)]">
+           <motion.img 
+             animate={scanning ? {
+               scale: [1, 1.2, 1.1, 1.3, 1],
+               filter: ['hue-rotate(0deg) contrast(1)', 'hue-rotate(90deg) contrast(1.5)', 'hue-rotate(270deg) contrast(2)', 'hue-rotate(360deg) contrast(1)'],
+               x: [0, -5, 5, -2, 2, 0],
+               y: [0, 5, -5, 2, -2, 0]
+             } : {
+               scale: 1,
+               filter: 'hue-rotate(0deg) contrast(1)',
+             }}
+             transition={scanning ? { duration: 0.5, repeat: Infinity, repeatType: "mirror" } : { duration: 0.3 }}
              src="https://media.giphy.com/media/TJawtKM6OCKkvwCIqX/giphy.gif" 
-             alt="Snoop Scan" 
-             className="w-full h-full object-cover opacity-80"
+             alt="Snoop Scan Focus" 
+             className="w-full h-full object-cover opacity-90"
            />
+           
+           {/* Dinámicas de Distracción Psicológica */}
+           {scanning && (
+             <motion.div 
+               animate={{ opacity: [0, 1, 0] }}
+               transition={{ duration: 0.1, repeat: Infinity }}
+               className="absolute inset-0 bg-red-600 mix-blend-overlay z-0"
+             />
+           )}
            
            {/* Scanning Line */}
            {scanning && (
              <motion.div 
                animate={{ top: ['0%', '100%', '0%'] }}
-               transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-               className="absolute left-0 right-0 h-1 bg-miami-cyan shadow-[0_0_20px_#00E5FF] z-10"
+               transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
+               className="absolute left-0 right-0 h-2 bg-miami-cyan shadow-[0_0_30px_#00E5FF] z-10"
              />
            )}
            
@@ -107,16 +122,22 @@ function AgeVerification({ onVerify }: { onVerify: () => void }) {
            <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-20 z-0 mix-blend-overlay"></div>
         </div>
 
-        <div className="h-28 flex items-center justify-center w-full">
+        <div className="h-28 flex items-center justify-center w-full relative">
           {scanning ? (
-            <motion.div 
-              animate={{ opacity: [0.3, 1, 0.3] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-              className="flex flex-col items-center"
-            >
-              <div className="w-8 h-8 border-4 border-miami-pink/30 border-t-miami-pink rounded-full animate-spin mb-4" />
-              <p className="text-miami-pink font-mono tracking-widest text-sm">ESCANEANDO ROSTRO...</p>
-            </motion.div>
+            <div className="flex flex-col items-center">
+              <motion.div 
+                animate={{ rotate: 360, scale: [1, 1.2, 1] }}
+                transition={{ duration: 0.5, repeat: Infinity }}
+                className="w-10 h-10 border-4 border-x-miami-cyan border-y-miami-pink rounded-full mb-2"
+              />
+              <motion.div
+                animate={{ opacity: [1, 0, 1] }}
+                transition={{ duration: 0.2, repeat: Infinity }}
+              >
+                <p className="text-red-500 font-display tracking-widest text-lg drop-shadow-[0_0_10px_rgba(255,0,0,0.8)]">DISTORSIÓN NEURONAL ACTIVA</p>
+                <p className="text-zinc-300 font-mono text-xs opacity-50">Si eres menor... cierra los ojos...</p>
+              </motion.div>
+            </div>
           ) : (
             <motion.div 
               initial={{ opacity: 0, y: 10 }}
@@ -292,60 +313,47 @@ export default function App() {
           <p className="text-gray-400 max-w-lg mx-auto">Explora nuestra colección de vapers y esencias premium.</p>
         </div>
 
-        <div className="flex flex-wrap justify-center items-center gap-12 md:gap-16 max-w-5xl mx-auto">
-          {VAPERS_PICS.length > 0 ? VAPERS_PICS.map((link, i) => (
-            <motion.a 
-              href={link}
-              target="_blank"
-              rel="noreferrer"
+        <div className="flex flex-wrap justify-center items-center gap-6 max-w-5xl mx-auto">
+          {VAPERS_ASSETS.length > 0 ? VAPERS_ASSETS.map((asset, i) => (
+            <motion.div 
               key={i}
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              whileHover={{ y: -10 }}
+              whileHover={{ scale: 1.05 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.15 }}
-              className="flex items-center justify-center group cursor-pointer"
+              transition={{ delay: i * 0.1 }}
+              className="relative w-full sm:w-64 aspect-[3/4] rounded-2xl overflow-hidden bg-zinc-900 border border-zinc-800 shadow-[0_0_20px_rgba(0,0,0,0.5)] group"
             >
-              <div className="relative w-48 h-64 md:w-56 md:h-72 flex flex-col items-center justify-center bg-zinc-900 overflow-hidden rounded-[2rem] p-6 shadow-xl border border-zinc-800 hover:border-miami-cyan/50 transition-colors">
-                 <div className="absolute inset-0 bg-gradient-to-tr from-miami-cyan/20 to-miami-pink/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                 <Wind className="w-16 h-16 text-zinc-600 group-hover:text-white transition-colors mb-4 relative z-10" />
-                 <span className="font-display text-xl text-zinc-400 group-hover:text-white transition-colors relative z-10">Ver Vaper {i + 1}</span>
-                 <span className="text-xs text-miami-pink mt-2 font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">Abrir Enlace</span>
-              </div>
-            </motion.a>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity" />
+              {asset.type === 'video' ? (
+                 <video 
+                   src={asset.src} 
+                   autoPlay 
+                   muted 
+                   loop 
+                   playsInline
+                   controls
+                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                 />
+              ) : (
+                 <img 
+                   src={asset.src} 
+                   alt={`Vaper ${i + 1}`} 
+                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                 />
+              )}
+            </motion.div>
           )) : (
-            <p className="text-zinc-600 italic">Aquí aparecerán tus vapers...</p>
+            <div className="text-center bg-zinc-900/50 p-8 rounded-3xl border border-zinc-800 w-full">
+               <Wind className="w-16 h-16 text-miami-cyan mx-auto mb-4 opacity-50" />
+               <p className="text-zinc-500 font-mono text-sm tracking-wider uppercase mb-2">Sección en construcción</p>
+               <p className="text-zinc-600 italic">Sube tus fotos y videos de vapers a la carpeta /public/vapers/ y agrégalos en VAPERS_ASSETS</p>
+            </div>
           )}
         </div>
       </section>
 
-      {/* DESTILADOS PREMIUM SECTION */}
-      <section className="py-20 px-4 md:px-8 max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="font-display text-5xl md:text-6xl mb-4 text-yellow-500">DESTILADOS PREMIUM</h2>
-          <p className="text-gray-400 max-w-lg mx-auto">La mejor selección de licores y destilados para acompañar tus noches en Miami Granizados.</p>
-        </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto px-4">
-          {DESTILADOS_PICS.map((img, i) => (
-            <motion.div 
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="group cursor-pointer rounded-2xl overflow-hidden aspect-[3/4] relative bg-zinc-900 border border-zinc-800 hover:border-yellow-500/50 transition-colors"
-            >
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <img 
-                src={img} 
-                alt={`Destilado Premium ${i + 1}`} 
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
-              />
-            </motion.div>
-          ))}
-        </div>
-      </section>
 
       {/* LOCAL VIDEOS SECTION */}
       <section className="py-20 overflow-hidden">
