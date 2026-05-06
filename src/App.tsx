@@ -1,0 +1,227 @@
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+import { motion } from 'motion/react';
+import { Instagram, MapPin, Phone, CupSoda, Martini, Star } from 'lucide-react';
+
+const MENU_ITEMS = [
+  {
+    category: 'Granizados',
+    icon: <CupSoda className="w-8 h-8 text-miami-cyan" />,
+    items: [
+      { name: 'Miami Vice', desc: 'Fresa y Piña Colada', price: '$12K' },
+      { name: 'Tropical Blue', desc: 'Maracuyá, curazao azul, limón', price: '$10K' },
+      { name: 'Brisa de Mango', desc: 'Mango biche, sal, limón y tajín', price: '$10K' },
+    ]
+  },
+  {
+    category: 'Cocktails',
+    icon: <Martini className="w-8 h-8 text-miami-pink" />,
+    items: [
+      { name: 'Margarita Clásica', desc: 'Tequila, triple sec, limón', price: '$18K' },
+      { name: 'Mojito Cubano', desc: 'Ron, hierbabuena, soda, limón', price: '$16K' },
+      { name: 'Piña Colada', desc: 'Ron blanco, crema de coco, piña', price: '$18K' },
+    ]
+  }
+];
+
+const IG_PICS = [
+  "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&q=80&w=800",
+  "https://images.unsplash.com/photo-1549406566-0775d038ea8f?auto=format&fit=crop&q=80&w=800",
+  "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&q=80&w=800",
+  "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?auto=format&fit=crop&q=80&w=800",
+  "https://images.unsplash.com/photo-1579758629938-03607ccf137e?auto=format&fit=crop&q=80&w=800",
+  "https://images.unsplash.com/photo-1595981267035-7b04d84b4e18?auto=format&fit=crop&q=80&w=800"
+];
+
+export default function App() {
+  return (
+    <div className="bg-dark-bg min-h-screen text-white font-body selection:bg-miami-pink selection:text-white">
+      {/* HEADER / NAV */}
+      <nav className="fixed top-0 left-0 w-full z-50 p-4 md:p-6 mb-12 flex justify-between items-center mix-blend-difference">
+        <div className="font-display text-xl tracking-wider text-miami-cyan">MIAMI<span className="text-miami-pink">.</span></div>
+        <a 
+          href="https://www.instagram.com/miamicocktailss?igsh=Y3A0MHp2enkza3Ry" 
+          target="_blank" 
+          rel="noreferrer"
+          className="flex items-center gap-2 bg-miami-pink text-white px-4 py-2 rounded-full font-bold text-sm tracking-wide hover:bg-white hover:text-miami-pink transition-colors glow-pink"
+        >
+          <Instagram className="w-4 h-4" />
+          <span>SÍGUENOS</span>
+        </a>
+      </nav>
+
+      {/* HERO SECTION */}
+      <header className="relative pt-32 pb-20 px-4 md:px-8 overflow-hidden flex flex-col items-center justify-center min-h-[90vh]">
+        
+        {/* Background ambient elements */}
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-miami-pink/20 rounded-full blur-[100px] pointer-events-none" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-miami-cyan/20 rounded-full blur-[100px] pointer-events-none" />
+
+        <motion.div
+          initial={{ opacity: 0, y: 50, scale: 0.9 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="relative z-10 text-center"
+        >
+          <h1 className="font-display flex flex-col items-center leading-[0.8] mb-6">
+            <span className="text-[18vw] md:text-[12vw] text-stroke-pink uppercase -rotate-2 transform">MIAMI</span>
+            <span className="text-[12vw] md:text-[8vw] text-miami-cyan uppercase relative z-10 glow-cyan">GRANIZADOS</span>
+            <span className="text-[10vw] md:text-[6vw] text-white uppercase relative z-10">& COCKTAILS</span>
+          </h1>
+          
+          <motion.p 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.6, duration: 1 }}
+            className="text-lg md:text-xl md:max-w-xl mx-auto text-gray-300 font-light mt-8 tracking-wide"
+          >
+            Refrescando a <strong className="font-semibold text-white">Magangué</strong> con el verdadero sabor tropical, colores vibrantes y la mejor energía.
+          </motion.p>
+        </motion.div>
+      </header>
+
+      {/* MARQUEE */}
+      <div className="bg-miami-yellow text-black font-display text-4xl md:text-6xl py-4 overflow-hidden -rotate-1 scale-105 border-y-4 border-black shadow-[0_0_30px_rgba(255,234,0,0.4)] relative z-20">
+        <div className="marquee-track">
+          {[...Array(2)].map((_, i) => (
+            <div key={i} className="flex whitespace-nowrap px-4">
+              <span className="mx-4">🍹 MAGANGUÉ</span>
+              <span className="mx-4 text-miami-pink">✦</span>
+              <span className="mx-4">🌴 COCKTAILS</span>
+              <span className="mx-4 text-miami-cyan">✦</span>
+              <span className="mx-4">🧊 GRANIZADOS</span>
+              <span className="mx-4 text-miami-pink">✦</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* MENU SECTION */}
+      <section className="py-24 px-4 md:px-8 max-w-6xl mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="font-display text-6xl md:text-7xl mb-4">NUESTRO MENÚ</h2>
+          <p className="text-gray-400 max-w-lg mx-auto">Preparados al momento, con los mejores ingredientes y un toque único que no encontrarás en ningún otro lugar en Magangué.</p>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-12">
+          {MENU_ITEMS.map((section, idx) => (
+            <motion.div 
+              key={idx}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ delay: idx * 0.2 }}
+              className="bg-zinc-900/50 border border-zinc-800 p-8 rounded-3xl backdrop-blur-sm"
+            >
+              <div className="flex items-center gap-4 mb-8">
+                {section.icon}
+                <h3 className="font-display text-4xl text-white tracking-widest uppercase">{section.category}</h3>
+              </div>
+              
+              <ul className="space-y-6">
+                {section.items.map((item, i) => (
+                  <li key={i} className="group">
+                    <div className="flex justify-between items-baseline mb-1">
+                      <h4 className="text-xl font-bold font-display tracking-wide group-hover:text-miami-cyan transition-colors">{item.name}</h4>
+                      <div className="flex-1 border-b border-dashed border-zinc-700 mx-4 opacity-30 group-hover:block transition-all" />
+                      <span className="text-miami-pink font-bold font-display text-xl">{item.price}</span>
+                    </div>
+                    <p className="text-sm text-zinc-400 font-light">{item.desc}</p>
+                  </li>
+                ))}
+              </ul>
+              
+              <div className="mt-8 pt-6 border-t border-zinc-800">
+                 <p className="text-xs text-zinc-500 italic uppercase tracking-wider flex items-center gap-2">
+                   <Star className="w-3 h-3 text-miami-yellow" />
+                   Pregunta por los especiales del día
+                 </p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* INSTAGRAM VIBE / GALLERY SECTION */}
+      <section className="py-20 overflow-hidden">
+        <div className="px-4 text-center mb-12">
+             <h2 className="font-display text-5xl md:text-6xl mb-4 uppercase">
+               Siente la <span className="text-miami-pink">vibra</span>
+             </h2>
+             <a href="https://www.instagram.com/miamicocktailss?igsh=Y3A0MHp2enkza3Ry" target="_blank" rel="noreferrer" className="inline-block text-miami-cyan underline underline-offset-4 hover:text-white transition-colors">
+               @miamicocktailss
+             </a>
+        </div>
+
+        {/* Diagonal photo grid */}
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 px-4 md:px-8 max-w-7xl mx-auto -rotate-2 transform scale-105 mb-16">
+          {IG_PICS.map((img, i) => (
+            <motion.a 
+              href="https://www.instagram.com/miamicocktailss?igsh=Y3A0MHp2enkza3Ry"
+              target="_blank"
+              rel="noreferrer"
+              key={i}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              whileHover={{ scale: 1.05, zIndex: 10 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className={`block rounded-2xl overflow-hidden aspect-[4/5] bg-zinc-900 border-2 border-transparent hover:border-miami-pink transition-all ${i % 2 === 0 ? 'translate-y-8' : ''}`}
+            >
+              <img src={img} alt="Miami Granizados feed" className="w-full h-full object-cover" />
+            </motion.a>
+          ))}
+        </div>
+      </section>
+
+      {/* FOOTER / CONTACT */}
+      <footer className="bg-black pt-24 pb-12 px-4 md:px-8 border-t border-zinc-900 relative">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <h2 className="font-display text-5xl text-stroke mb-8">VISÍTANOS</h2>
+            <div className="space-y-4">
+              <div className="flex items-center gap-4 text-zinc-300 hover:text-miami-cyan transition-colors">
+                <MapPin className="w-6 h-6 shrink-0" />
+                <p>Magangué, Bolívar<br/><span className="text-sm opacity-60">Visita nuestro perfil de Instagram para la ubicación exacta.</span></p>
+              </div>
+              <a href="https://www.instagram.com/miamicocktailss?igsh=Y3A0MHp2enkza3Ry" target="_blank" rel="noreferrer" className="flex items-center gap-4 text-zinc-300 hover:text-miami-pink transition-colors">
+                <Instagram className="w-6 h-6 shrink-0" />
+                <p>@miamicocktailss</p>
+              </a>
+               <div className="flex items-center gap-4 text-zinc-300">
+                <Phone className="w-6 h-6 shrink-0" />
+                <p>Abierto en las tardes y noches<br/><span className="text-sm opacity-60">Ideal para refrescarte</span></p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-zinc-900/50 p-8 rounded-3xl border border-zinc-800 text-center">
+             <h3 className="font-display inline-block text-3xl mb-4 px-4 py-2 bg-miami-pink text-white uppercase transform -rotate-2">
+               ¡Plan Perfecto!
+             </h3>
+             <p className="text-zinc-400 font-light mb-8">
+               Música, amigos, y el mejor ambiente de la ciudad. Ven a disfrutar de un granizado o cocktail preparado con la mejor técnica.
+             </p>
+             <a 
+               href="https://www.instagram.com/miamicocktailss?igsh=Y3A0MHp2enkza3Ry" 
+               target="_blank" 
+               rel="noreferrer"
+               className="inline-flex items-center gap-2 bg-miami-cyan text-black px-8 py-4 rounded-full font-bold font-display text-xl uppercase hover:bg-white hover:text-black transition-all glow-cyan transform hover:scale-105"
+             >
+               Ver Fotos y Videos
+             </a>
+          </div>
+        </div>
+
+        <div className="mt-20 text-center text-zinc-700 text-sm flex flex-col md:flex-row items-center justify-between max-w-6xl mx-auto border-t border-zinc-900 pt-8">
+          <p>© {new Date().getFullYear()} Miami Granizados & Cocktails.</p>
+          <p className="mt-2 md:mt-0">Magangué, Colombia 🌴</p>
+        </div>
+      </footer>
+
+    </div>
+  );
+}
