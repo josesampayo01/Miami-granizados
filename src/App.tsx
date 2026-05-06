@@ -4,7 +4,7 @@
  */
 
 import { motion } from 'motion/react';
-import { Instagram, MapPin, Phone, CupSoda, Martini, Star } from 'lucide-react';
+import { Instagram, MapPin, Phone, CupSoda, Wind, Star } from 'lucide-react';
 
 const MENU_ITEMS = [
   {
@@ -17,23 +17,23 @@ const MENU_ITEMS = [
     ]
   },
   {
-    category: 'Cocktails',
-    icon: <Martini className="w-8 h-8 text-miami-pink" />,
+    category: 'Vapers Destilados',
+    icon: <Wind className="w-8 h-8 text-miami-pink" />,
     items: [
-      { name: 'Margarita Clásica', desc: 'Tequila, triple sec, limón', price: '$18K' },
-      { name: 'Mojito Cubano', desc: 'Ron, hierbabuena, soda, limón', price: '$16K' },
-      { name: 'Piña Colada', desc: 'Ron blanco, crema de coco, piña', price: '$18K' },
+      { name: 'Vaper Desechable', desc: 'Sabores frutales, ice y clásicos (5000 puffs)', price: '$50K' },
+      { name: 'Recargables Pro', desc: 'Equipos avanzados con control de flujo', price: '$120K' },
+      { name: 'Esencias Premium', desc: 'Diversidad de sabores exclusivos y sales', price: '$35K' },
     ]
   }
 ];
 
 const IG_PICS = [
-  "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&q=80&w=800",
-  "https://images.unsplash.com/photo-1549406566-0775d038ea8f?auto=format&fit=crop&q=80&w=800",
+  "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&q=80&w=800",
+  "https://images.unsplash.com/photo-1536599018102-9f803c140fc1?auto=format&fit=crop&q=80&w=800",
+  "https://images.unsplash.com/photo-1544145945-f9042519a771?auto=format&fit=crop&q=80&w=800",
+  "https://images.unsplash.com/photo-1601332822459-f8319fbf3b36?auto=format&fit=crop&q=80&w=800",
   "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&q=80&w=800",
-  "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?auto=format&fit=crop&q=80&w=800",
-  "https://images.unsplash.com/photo-1579758629938-03607ccf137e?auto=format&fit=crop&q=80&w=800",
-  "https://images.unsplash.com/photo-1595981267035-7b04d84b4e18?auto=format&fit=crop&q=80&w=800"
+  "https://images.unsplash.com/photo-1514575110897-1253ff7b2cca?auto=format&fit=crop&q=80&w=800"
 ];
 
 export default function App() {
@@ -69,7 +69,6 @@ export default function App() {
           <h1 className="font-display flex flex-col items-center leading-[0.8] mb-6">
             <span className="text-[18vw] md:text-[12vw] text-stroke-pink uppercase -rotate-2 transform">MIAMI</span>
             <span className="text-[12vw] md:text-[8vw] text-miami-cyan uppercase relative z-10 glow-cyan">GRANIZADOS</span>
-            <span className="text-[10vw] md:text-[6vw] text-white uppercase relative z-10">& COCKTAILS</span>
           </h1>
           
           <motion.p 
@@ -90,7 +89,7 @@ export default function App() {
             <div key={i} className="flex whitespace-nowrap px-4">
               <span className="mx-4">🍹 MAGANGUÉ</span>
               <span className="mx-4 text-miami-pink">✦</span>
-              <span className="mx-4">🌴 COCKTAILS</span>
+              <span className="mx-4">💨 VAPERS</span>
               <span className="mx-4 text-miami-cyan">✦</span>
               <span className="mx-4">🧊 GRANIZADOS</span>
               <span className="mx-4 text-miami-pink">✦</span>
@@ -203,7 +202,7 @@ export default function App() {
                ¡Plan Perfecto!
              </h3>
              <p className="text-zinc-400 font-light mb-8">
-               Música, amigos, y el mejor ambiente de la ciudad. Ven a disfrutar de un granizado o cocktail preparado con la mejor técnica.
+               Música, amigos, y el mejor ambiente de la ciudad. Ven a disfrutar de un granizado refrescante o explora nuestra variedad de vapers.
              </p>
              <a 
                href="https://www.instagram.com/miamicocktailss?igsh=Y3A0MHp2enkza3Ry" 
@@ -217,7 +216,7 @@ export default function App() {
         </div>
 
         <div className="mt-20 text-center text-zinc-700 text-sm flex flex-col md:flex-row items-center justify-between max-w-6xl mx-auto border-t border-zinc-900 pt-8">
-          <p>© {new Date().getFullYear()} Miami Granizados & Cocktails.</p>
+          <p>© {new Date().getFullYear()} Miami Granizados.</p>
           <p className="mt-2 md:mt-0">Magangué, Colombia 🌴</p>
         </div>
       </footer>
