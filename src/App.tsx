@@ -37,8 +37,8 @@ const IG_PICS = [
 ];
 
 const LOGOS = [
-  "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/refs/heads/main/public/images/logos/IMG_3930.png",
-  "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/refs/heads/main/public/images/logos/IMG_3931.png",
+  "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/refs/heads/main/public/images/Logo/IMG_3930.png",
+  "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/refs/heads/main/public/images/Logo/IMG_3931.png",
 ];
 
 const PROMOCIONES_PICS = [
@@ -167,24 +167,21 @@ export default function App() {
           <p className="text-gray-400 max-w-lg mx-auto">El distintivo de nuestra calidad y sabor inconfundible.</p>
         </div>
 
-        <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 max-w-4xl mx-auto">
+        <div className="flex flex-wrap justify-center items-center gap-12 md:gap-24 max-w-4xl mx-auto">
           {LOGOS.map((img, i) => (
             <motion.div 
               key={i}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.15 }}
-              className="bg-zinc-900/60 rounded-[2rem] p-6 md:p-8 border border-zinc-800 shadow-2xl flex items-center justify-center group hover:border-miami-cyan hover:bg-zinc-800/80 transition-all cursor-pointer relative overflow-hidden flex-shrink-0"
+              className="flex items-center justify-center group cursor-pointer"
             >
-              {/* Resaltado trasero al hacer hover */}
-              <div className="absolute inset-0 bg-gradient-to-t from-miami-cyan/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-              
               <div className="relative w-32 h-32 md:w-48 md:h-48 flex items-center justify-center">
                  <img 
                     src={img} 
                     alt={`Logo Miami ${i + 1}`} 
-                    className="w-full h-full object-contain filter drop-shadow-xl group-hover:scale-110 transition-transform duration-700 ease-out"
+                    className="w-full h-full object-contain filter drop-shadow-[0_0_15px_rgba(255,255,255,0.15)] group-hover:drop-shadow-[0_0_25px_rgba(255,42,128,0.5)] group-hover:scale-105 transition-all duration-500 ease-out"
                  />
               </div>
             </motion.div>
