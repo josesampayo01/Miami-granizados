@@ -163,7 +163,7 @@ export default function App() {
              {/* Video Destacado */}
              <div className="max-w-[400px] mx-auto bg-zinc-900/50 p-2 rounded-[2rem] border border-zinc-800 shadow-[0_0_40px_rgba(255,42,128,0.2)] mb-12">
                 <iframe 
-                  src="https://www.instagram.com/reel/DSvfXLTka9t/embed" 
+                  src="https://www.instagram.com/reel/DSvfXLTka9t/embed/?autoplay=1"
                   className="w-full h-[600px] rounded-3xl"
                   frameBorder="0" 
                   scrolling="no" 
