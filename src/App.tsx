@@ -37,8 +37,8 @@ const IG_PICS = [
 ];
 
 const LOGOS = [
-  "/images/logos/IMG_3930.png",
-  "/images/logos/IMG_3931.png",
+  "Miami-granizados/public/images/logos
+/IMG_3930.png",
 ];
 
 const PRODUCT_PICS = [
