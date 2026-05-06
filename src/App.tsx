@@ -41,9 +41,9 @@ const LOGOS = [
   "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/refs/heads/main/public/images/logos/IMG_3931.png",
 ];
 
-const PRODUCT_PICS = [
-  "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/refs/heads/main/public/images/products/IMG_3933.png",
-  "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/refs/heads/main/public/images/products/IMG_3934.png",
+const PROMOCIONES_PICS = [
+  "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/refs/heads/main/public/images/promociones/IMG_3933.png",
+  "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/refs/heads/main/public/images/promociones/IMG_3934.png",
 ];
 
 export default function App() {
@@ -167,7 +167,7 @@ export default function App() {
           <p className="text-gray-400 max-w-lg mx-auto">El distintivo de nuestra calidad y sabor inconfundible.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 max-w-4xl mx-auto">
+        <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 max-w-4xl mx-auto">
           {LOGOS.map((img, i) => (
             <motion.div 
               key={i}
@@ -175,16 +175,16 @@ export default function App() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.15 }}
-              className="bg-zinc-900/60 rounded-[2rem] p-4 md:p-8 border border-zinc-800 shadow-2xl flex flex-col items-center justify-center group hover:border-miami-cyan hover:bg-zinc-800/80 transition-all cursor-pointer relative overflow-hidden"
+              className="bg-zinc-900/60 rounded-[2rem] p-6 md:p-8 border border-zinc-800 shadow-2xl flex items-center justify-center group hover:border-miami-cyan hover:bg-zinc-800/80 transition-all cursor-pointer relative overflow-hidden flex-shrink-0"
             >
               {/* Resaltado trasero al hacer hover */}
               <div className="absolute inset-0 bg-gradient-to-t from-miami-cyan/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
               
-              <div className="relative w-full aspect-square md:aspect-[4/3] rounded-2xl overflow-hidden flex items-center justify-center bg-zinc-900/40">
+              <div className="relative w-32 h-32 md:w-48 md:h-48 flex items-center justify-center">
                  <img 
                     src={img} 
                     alt={`Logo Miami ${i + 1}`} 
-                    className="w-full h-full object-cover scale-[2.8] group-hover:scale-[3] transition-transform duration-700 ease-out"
+                    className="w-full h-full object-contain filter drop-shadow-xl group-hover:scale-110 transition-transform duration-700 ease-out"
                  />
               </div>
             </motion.div>
@@ -253,7 +253,7 @@ export default function App() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 max-w-5xl mx-auto relative z-10">
-          {PRODUCT_PICS.map((img, i) => (
+          {PROMOCIONES_PICS.map((img, i) => (
             <motion.div 
               key={i}
               initial={{ opacity: 0, scale: 0.95 }}
