@@ -3,6 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { Instagram, MapPin, Phone, CupSoda, Wind, Star } from 'lucide-react';
 
@@ -27,7 +28,14 @@ const MENU_ITEMS = [
   }
 ];
 
-
+const IG_PICS = [
+  "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&q=80&w=800",
+  "https://images.unsplash.com/photo-1536599018102-9f803c140fc1?auto=format&fit=crop&q=80&w=800",
+  "https://images.unsplash.com/photo-1544145945-f9042519a771?auto=format&fit=crop&q=80&w=800",
+  "https://images.unsplash.com/photo-1601332822459-f8319fbf3b36?auto=format&fit=crop&q=80&w=800",
+  "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&q=80&w=800",
+  "https://images.unsplash.com/photo-1514575110897-1253ff7b2cca?auto=format&fit=crop&q=80&w=800"
+];
 
 const BRAND_LOGO = "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/refs/heads/main/public/images/logos/IMG_3930.jpeg";
 
@@ -48,9 +56,107 @@ const PROMOCIONES_PICS = [
   "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/main/public/images/promociones/IMG_3934.jpeg",
 ];
 
-export default function App() {
+const DESTILADOS_PICS = [
+  "https://images.unsplash.com/photo-1569937746599-5ea0dc90db67?q=80&w=800",
+  "https://images.unsplash.com/photo-1614316654215-64ce7807ecad?q=80&w=800",
+  "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=800",
+  "https://images.unsplash.com/photo-1527281400683-1aae777175f8?q=80&w=800",
+];
+
+function AgeVerification({ onVerify }: { onVerify: () => void }) {
+  const [scanning, setScanning] = useState(true);
+
+  useEffect(() => {
+    // Simulate face scan
+    const timer = setTimeout(() => {
+      setScanning(false);
+    }, 4000);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <div className="bg-dark-bg min-h-screen text-white font-body selection:bg-miami-pink selection:text-white">
+    <div className="fixed inset-0 z-[100] bg-black/95 flex flex-col items-center justify-center p-4 backdrop-blur-md">
+      <motion.div 
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        className="w-full max-w-md bg-zinc-900 border border-zinc-800 rounded-3xl p-8 flex flex-col items-center shadow-2xl relative overflow-hidden"
+      >
+        <h2 className="font-display text-3xl text-white mb-2 text-center tracking-wide">VERIFICACIÓN</h2>
+        <p className="text-zinc-400 text-sm mb-8 text-center uppercase tracking-widest font-bold font-mono">Control de acceso</p>
+
+        {/* Face Scan Area */}
+        <div className="relative w-48 h-48 rounded-2xl overflow-hidden mb-8 border-2 border-zinc-800 shadow-[0_0_30px_rgba(0,0,0,0.5)]">
+           <img 
+             src="https://media.giphy.com/media/TJawtKM6OCKkvwCIqX/giphy.gif" 
+             alt="Snoop Scan" 
+             className="w-full h-full object-cover opacity-80"
+           />
+           
+           {/* Scanning Line */}
+           {scanning && (
+             <motion.div 
+               animate={{ top: ['0%', '100%', '0%'] }}
+               transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+               className="absolute left-0 right-0 h-1 bg-miami-cyan shadow-[0_0_20px_#00E5FF] z-10"
+             />
+           )}
+           
+           {/* Focus reticle corners */}
+           <div className="absolute top-2 left-2 w-4 h-4 border-t-2 border-l-2 border-miami-cyan opacity-70"></div>
+           <div className="absolute top-2 right-2 w-4 h-4 border-t-2 border-r-2 border-miami-cyan opacity-70"></div>
+           <div className="absolute bottom-2 left-2 w-4 h-4 border-b-2 border-l-2 border-miami-cyan opacity-70"></div>
+           <div className="absolute bottom-2 right-2 w-4 h-4 border-b-2 border-r-2 border-miami-cyan opacity-70"></div>
+           
+           {/* Cyber Grid */}
+           <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-20 z-0 mix-blend-overlay"></div>
+        </div>
+
+        <div className="h-28 flex items-center justify-center w-full">
+          {scanning ? (
+            <motion.div 
+              animate={{ opacity: [0.3, 1, 0.3] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+              className="flex flex-col items-center"
+            >
+              <div className="w-8 h-8 border-4 border-miami-pink/30 border-t-miami-pink rounded-full animate-spin mb-4" />
+              <p className="text-miami-pink font-mono tracking-widest text-sm">ESCANEANDO ROSTRO...</p>
+            </motion.div>
+          ) : (
+            <motion.div 
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-center w-full"
+            >
+              <p className="text-zinc-300 mb-6 text-sm font-medium">Sitio con contenido para adultos (+18).<br/>¿Eres mayor de edad?</p>
+              <div className="flex gap-4 justify-center w-full">
+                <button 
+                  onClick={onVerify}
+                  className="flex-1 bg-miami-cyan text-black font-bold py-3 px-4 rounded-xl hover:bg-white transition-all transform hover:scale-105 active:scale-95 text-sm tracking-wider"
+                >
+                  SÍ, SOY MAYOR
+                </button>
+                <button 
+                  onClick={() => window.location.href = "https://www.google.com"}
+                  className="flex-1 bg-zinc-800 text-zinc-400 font-bold py-3 px-4 rounded-xl hover:bg-zinc-700 hover:text-white transition-all text-sm tracking-wider"
+                >
+                  SALIR
+                </button>
+              </div>
+            </motion.div>
+          )}
+        </div>
+      </motion.div>
+    </div>
+  );
+}
+
+export default function App() {
+  const [isAgeVerified, setIsAgeVerified] = useState(false);
+
+  return (
+    <div className="bg-dark-bg min-h-screen text-white font-body selection:bg-miami-pink selection:text-white relative">
+      {!isAgeVerified && <AgeVerification onVerify={() => setIsAgeVerified(true)} />}
+
       {/* HEADER / NAV */}
       <nav className="fixed top-0 left-0 w-full z-50 p-4 md:p-6 mb-12 flex justify-between items-center mix-blend-difference">
         <a href="#" className="flex items-center gap-3 cursor-pointer">
@@ -217,6 +323,34 @@ export default function App() {
         </div>
       </section>
 
+      {/* DESTILADOS PREMIUM SECTION */}
+      <section className="py-20 px-4 md:px-8 max-w-7xl mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="font-display text-5xl md:text-6xl mb-4 text-yellow-500">DESTILADOS PREMIUM</h2>
+          <p className="text-gray-400 max-w-lg mx-auto">La mejor selección de licores y destilados para acompañar tus noches en Miami Granizados.</p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto px-4">
+          {DESTILADOS_PICS.map((img, i) => (
+            <motion.div 
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="group cursor-pointer rounded-2xl overflow-hidden aspect-[3/4] relative bg-zinc-900 border border-zinc-800 hover:border-yellow-500/50 transition-colors"
+            >
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <img 
+                src={img} 
+                alt={`Destilado Premium ${i + 1}`} 
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+              />
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
       {/* INSTAGRAM VIBE / GALLERY SECTION */}
       <section className="py-20 overflow-hidden">
         <div className="px-4 text-center mb-12">
@@ -239,7 +373,30 @@ export default function App() {
              </div>
         </div>
 
-
+        {/* Diagonal photo grid */}
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 px-4 md:px-8 max-w-7xl mx-auto -rotate-2 transform scale-105 mb-16">
+          {IG_PICS.map((img, i) => (
+            <motion.a 
+              href="https://www.instagram.com/miamicocktailss?igsh=Y3A0MHp2enkza3Ry"
+              target="_blank"
+              rel="noreferrer"
+              key={i}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              whileHover={{ 
+                 scale: 1.03, 
+                 zIndex: 10,
+                 rotate: i % 2 === 0 ? 1 : -1,
+                 boxShadow: "0px 10px 20px rgba(0,0,0,0.4)" 
+               }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className={`block rounded-2xl overflow-hidden aspect-[4/5] bg-zinc-900 border-2 border-transparent hover:border-miami-pink transition-all ${i % 2 === 0 ? 'translate-y-8' : ''}`}
+            >
+              <img src={img} alt="Miami Granizados feed" className="w-full h-full object-cover" />
+            </motion.a>
+          ))}
+        </div>
       </section>
 
       {/* PROMOCIONES SECTION (Moved to the bottom in blur mode) */}
