@@ -39,8 +39,6 @@ const IG_PICS = [
 const PRODUCT_PICS = [
   "/images/products/IMG_3930.png",
   "/images/products/IMG_3931.png",
-  "/images/products/IMG_3933.png",
-  "/images/products/IMG_3934.png",
 ];
 
 export default function App() {
@@ -164,7 +162,7 @@ export default function App() {
           <p className="text-gray-400 max-w-lg mx-auto">Nuestros productos y creaciones listos para acompañarte.</p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 max-w-4xl mx-auto">
           {PRODUCT_PICS.map((img, i) => (
             <motion.div 
               key={i}
@@ -177,11 +175,11 @@ export default function App() {
               {/* Resaltado trasero al hacer hover */}
               <div className="absolute inset-0 bg-gradient-to-t from-miami-cyan/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
               
-              <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden flex items-center justify-center">
+              <div className="relative w-full aspect-square md:aspect-[4/3] rounded-2xl overflow-hidden flex items-center justify-center bg-zinc-900/40">
                  <img 
                     src={img} 
                     alt={`Producto Miami ${i + 1}`} 
-                    className="w-full h-full object-contain filter drop-shadow-[0_10px_20px_rgba(0,0,0,0.8)] group-hover:scale-110 group-hover:-translate-y-2 transition-all duration-500 ease-out"
+                    className="w-full h-full object-cover scale-[2.8] group-hover:scale-[3] transition-transform duration-700 ease-out"
                  />
               </div>
             </motion.div>
