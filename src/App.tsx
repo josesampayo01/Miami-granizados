@@ -51,8 +51,8 @@ const VAPERS_PICS: string[] = [
 ];
 
 const PROMOCIONES_PICS = [
-  "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/refs/heads/main/public/images/promociones/IMG_3933.png",
-  "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/refs/heads/main/public/images/promociones/IMG_3934.png",
+  "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/main/public/images/promociones/IMG_3933.jpeg",
+  "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/main/public/images/promociones/IMG_3934.jpeg",
 ];
 
 export default function App() {
