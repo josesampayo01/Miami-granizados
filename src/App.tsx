@@ -40,7 +40,7 @@ const BRAND_LOGO = "https://raw.githubusercontent.com/josesampayo01/Miami-graniz
 
 const FLAVOR_LOGOS = [
   "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/refs/heads/main/public/images/logos/IMG_3931.jpeg",
-  "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/refs/heads/main/public/images/logos/IMG_3936.png",
+  "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/refs/heads/main/public/images/logos/IMG_3930.jpeg",
 ];
 
 const VAPERS_PICS: string[] = [
