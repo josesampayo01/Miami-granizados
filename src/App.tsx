@@ -36,9 +36,14 @@ const IG_PICS = [
   "https://images.unsplash.com/photo-1514575110897-1253ff7b2cca?auto=format&fit=crop&q=80&w=800"
 ];
 
+const LOGOS = [
+  "/images/logos/IMG_3930.png",
+  "/images/logos/IMG_3931.png",
+];
+
 const PRODUCT_PICS = [
-  "/images/products/IMG_3930.png",
-  "/images/products/IMG_3931.png",
+  "/images/products/IMG_3933.png",
+  "/images/products/IMG_3934.png",
 ];
 
 export default function App() {
@@ -155,15 +160,15 @@ export default function App() {
         </div>
       </section>
 
-      {/* FEATURED PRODUCTS SECTION */}
+      {/* LOGOS / MARCAS SECTION */}
       <section className="py-20 px-4 md:px-8 max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="font-display text-5xl md:text-6xl mb-4">MIRA LO QUE TENEMOS</h2>
-          <p className="text-gray-400 max-w-lg mx-auto">Nuestros productos y creaciones listos para acompañarte.</p>
+          <h2 className="font-display text-5xl md:text-6xl mb-4 text-miami-cyan">NUESTRAS MARCAS</h2>
+          <p className="text-gray-400 max-w-lg mx-auto">El distintivo de nuestra calidad y sabor inconfundible.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 max-w-4xl mx-auto">
-          {PRODUCT_PICS.map((img, i) => (
+          {LOGOS.map((img, i) => (
             <motion.div 
               key={i}
               initial={{ opacity: 0, y: 30 }}
@@ -178,8 +183,37 @@ export default function App() {
               <div className="relative w-full aspect-square md:aspect-[4/3] rounded-2xl overflow-hidden flex items-center justify-center bg-zinc-900/40">
                  <img 
                     src={img} 
-                    alt={`Producto Miami ${i + 1}`} 
+                    alt={`Logo Miami ${i + 1}`} 
                     className="w-full h-full object-cover scale-[2.8] group-hover:scale-[3] transition-transform duration-700 ease-out"
+                 />
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* FEATURED PRODUCTS SECTION */}
+      <section className="py-20 px-4 md:px-8 max-w-7xl mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="font-display text-4xl md:text-5xl mb-4">MIRA LO QUE TENEMOS</h2>
+          <p className="text-gray-400 max-w-lg mx-auto">Nuestros productos y creaciones listos para acompañarte.</p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 max-w-4xl mx-auto">
+          {PRODUCT_PICS.map((img, i) => (
+            <motion.div 
+              key={i}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.15 }}
+              className="bg-black rounded-3xl overflow-hidden border border-zinc-800 shadow-xl group hover:border-miami-pink transition-all"
+            >
+              <div className="relative w-full aspect-[4/5] bg-zinc-900/50">
+                 <img 
+                    src={img} 
+                    alt={`Producto Miami ${i + 1}`} 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                  />
               </div>
             </motion.div>
