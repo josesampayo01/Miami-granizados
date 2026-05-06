@@ -182,7 +182,12 @@ export default function App() {
               key={i}
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              whileHover={{ scale: 1.05, zIndex: 10 }}
+              whileHover={{ 
+                 scale: 1.03, 
+                 zIndex: 10,
+                 rotate: i % 2 === 0 ? 1 : -1,
+                 boxShadow: "0px 10px 20px rgba(0,0,0,0.4)" 
+               }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
               className={`block rounded-2xl overflow-hidden aspect-[4/5] bg-zinc-900 border-2 border-transparent hover:border-miami-pink transition-all ${i % 2 === 0 ? 'translate-y-8' : ''}`}
