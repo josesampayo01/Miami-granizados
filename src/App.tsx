@@ -36,6 +36,8 @@ const IG_PICS = [
   "https://images.unsplash.com/photo-1514575110897-1253ff7b2cca?auto=format&fit=crop&q=80&w=800"
 ];
 
+const BRAND_LOGO = "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/refs/heads/main/public/images/logos/IMG_3930.jpeg";
+
 const LOGOS = [
   "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/refs/heads/main/public/images/logos/IMG_3931.jpeg",
   "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/refs/heads/main/public/images/logos/IMG_3936.png",
@@ -51,7 +53,10 @@ export default function App() {
     <div className="bg-dark-bg min-h-screen text-white font-body selection:bg-miami-pink selection:text-white">
       {/* HEADER / NAV */}
       <nav className="fixed top-0 left-0 w-full z-50 p-4 md:p-6 mb-12 flex justify-between items-center mix-blend-difference">
-        <div className="font-display text-xl tracking-wider text-miami-cyan">MIAMI<span className="text-miami-pink">.</span></div>
+        <a href="#" className="flex items-center gap-3 cursor-pointer">
+          <img src={BRAND_LOGO} alt="Miami Logo" className="h-10 w-10 md:h-12 md:w-12 rounded-full object-cover shadow-[0_0_15px_rgba(45,212,191,0.5)] border border-miami-cyan/50" />
+          <div className="font-display text-2xl tracking-wider text-miami-cyan hidden sm:block">MIAMI<span className="text-miami-pink">.</span></div>
+        </a>
         <a 
           href="https://www.instagram.com/miamicocktailss?igsh=Y3A0MHp2enkza3Ry" 
           target="_blank" 
@@ -310,8 +315,11 @@ export default function App() {
           </div>
         </div>
 
-        <div className="mt-20 text-center text-zinc-700 text-sm flex flex-col md:flex-row items-center justify-between max-w-6xl mx-auto border-t border-zinc-900 pt-8">
-          <p>© {new Date().getFullYear()} Miami Granizados.</p>
+        <div className="mt-20 text-center text-zinc-700 text-sm flex flex-col md:flex-row items-center justify-between max-w-6xl mx-auto border-t border-zinc-900 pt-8 gap-4">
+          <div className="flex items-center gap-3">
+             <img src={BRAND_LOGO} alt="Miami Logo" className="h-8 w-8 rounded-full object-cover grayscale opacity-50" />
+             <p>© {new Date().getFullYear()} Miami Granizados.</p>
+          </div>
           <p className="mt-2 md:mt-0">Magangué, Colombia 🌴</p>
         </div>
       </footer>
