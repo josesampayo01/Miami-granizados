@@ -4,8 +4,8 @@
  */
 
 import { useState, useEffect } from 'react';
-import { motion } from 'motion/react';
-import { Instagram, MapPin, Phone, CupSoda, Wind, Star } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
+import { Instagram, MapPin, Phone, CupSoda, Wind, Star, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const MENU_ITEMS = [
   {
@@ -28,13 +28,9 @@ const MENU_ITEMS = [
   }
 ];
 
-const IG_PICS = [
-  "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&q=80&w=800",
-  "https://images.unsplash.com/photo-1536599018102-9f803c140fc1?auto=format&fit=crop&q=80&w=800",
-  "https://images.unsplash.com/photo-1544145945-f9042519a771?auto=format&fit=crop&q=80&w=800",
-  "https://images.unsplash.com/photo-1601332822459-f8319fbf3b36?auto=format&fit=crop&q=80&w=800",
-  "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&q=80&w=800",
-  "https://images.unsplash.com/photo-1514575110897-1253ff7b2cca?auto=format&fit=crop&q=80&w=800"
+const LOCAL_VIDEOS = [
+  "/video/video1.mp4",
+  // Sube más videos a la carpeta public/video y agrégalos aquí si es necesario
 ];
 
 const BRAND_LOGO = "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/refs/heads/main/public/images/logos/IMG_3930.jpeg";
@@ -351,50 +347,34 @@ export default function App() {
         </div>
       </section>
 
-      {/* INSTAGRAM VIBE / GALLERY SECTION */}
+      {/* LOCAL VIDEOS SECTION */}
       <section className="py-20 overflow-hidden">
         <div className="px-4 text-center mb-12">
              <h2 className="font-display text-5xl md:text-6xl mb-4 uppercase">
-               Siente la <span className="text-miami-pink">vibra</span>
+               Nuestra <span className="text-miami-cyan">Vibra</span>
              </h2>
-             <a href="https://www.instagram.com/miamicocktailss?igsh=Y3A0MHp2enkza3Ry" target="_blank" rel="noreferrer" className="inline-block text-miami-cyan underline underline-offset-4 hover:text-white transition-colors mb-12">
-               @miamicocktailss
-             </a>
-             
-             {/* Video Destacado */}
-             <div className="max-w-[400px] mx-auto bg-zinc-900/50 p-2 rounded-[2rem] border border-zinc-800 shadow-[0_0_40px_rgba(255,42,128,0.2)] mb-12">
-                <iframe 
-                  src="https://www.instagram.com/reel/DSvfXLTka9t/embed/?autoplay=1"
-                  className="w-full h-[600px] rounded-3xl"
-                  frameBorder="0" 
-                  scrolling="no" 
-                  allowtransparency="true"
-                ></iframe>
-             </div>
+             <p className="text-zinc-400 max-w-lg mx-auto">Disfruta de nuestros mejores momentos.</p>
         </div>
 
-        {/* Diagonal photo grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 px-4 md:px-8 max-w-7xl mx-auto -rotate-2 transform scale-105 mb-16">
-          {IG_PICS.map((img, i) => (
-            <motion.a 
-              href="https://www.instagram.com/miamicocktailss?igsh=Y3A0MHp2enkza3Ry"
-              target="_blank"
-              rel="noreferrer"
+        <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+          {LOCAL_VIDEOS.map((vid, i) => (
+            <motion.div 
               key={i}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              whileHover={{ 
-                 scale: 1.03, 
-                 zIndex: 10,
-                 rotate: i % 2 === 0 ? 1 : -1,
-                 boxShadow: "0px 10px 20px rgba(0,0,0,0.4)" 
-               }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className={`block rounded-2xl overflow-hidden aspect-[4/5] bg-zinc-900 border-2 border-transparent hover:border-miami-pink transition-all ${i % 2 === 0 ? 'translate-y-8' : ''}`}
+              className="relative aspect-[9/16] rounded-3xl overflow-hidden bg-zinc-900 border-2 border-zinc-800 shadow-2xl"
             >
-              <img src={img} alt="Miami Granizados feed" className="w-full h-full object-cover" />
-            </motion.a>
+               <video 
+                 src={vid} 
+                 autoPlay 
+                 muted 
+                 loop 
+                 playsInline
+                 controls
+                 className="w-full h-full object-cover"
+               />
+            </motion.div>
           ))}
         </div>
       </section>
