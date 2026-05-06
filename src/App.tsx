@@ -156,9 +156,20 @@ export default function App() {
              <h2 className="font-display text-5xl md:text-6xl mb-4 uppercase">
                Siente la <span className="text-miami-pink">vibra</span>
              </h2>
-             <a href="https://www.instagram.com/miamicocktailss?igsh=Y3A0MHp2enkza3Ry" target="_blank" rel="noreferrer" className="inline-block text-miami-cyan underline underline-offset-4 hover:text-white transition-colors">
+             <a href="https://www.instagram.com/miamicocktailss?igsh=Y3A0MHp2enkza3Ry" target="_blank" rel="noreferrer" className="inline-block text-miami-cyan underline underline-offset-4 hover:text-white transition-colors mb-12">
                @miamicocktailss
              </a>
+             
+             {/* Video Destacado */}
+             <div className="max-w-[400px] mx-auto bg-zinc-900/50 p-2 rounded-[2rem] border border-zinc-800 shadow-[0_0_40px_rgba(255,42,128,0.2)] mb-12">
+                <iframe 
+                  src="https://www.instagram.com/reel/DSvfXLTka9t/embed" 
+                  className="w-full h-[600px] rounded-3xl"
+                  frameBorder="0" 
+                  scrolling="no" 
+                  allowTransparency
+                ></iframe>
+             </div>
         </div>
 
         {/* Diagonal photo grid */}
