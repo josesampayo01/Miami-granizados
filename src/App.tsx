@@ -37,13 +37,13 @@ const IG_PICS = [
 ];
 
 const LOGOS = [
-  "Miami-granizados/public/images/logos
-/IMG_3930.png",
+  "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/refs/heads/main/public/images/logos/IMG_3930.png",
+  "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/refs/heads/main/public/images/logos/IMG_3931.png",
 ];
 
 const PRODUCT_PICS = [
-  "/images/products/IMG_3933.png",
-  "/images/products/IMG_3934.png",
+  "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/refs/heads/main/public/images/products/IMG_3933.png",
+  "https://raw.githubusercontent.com/josesampayo01/Miami-granizados/refs/heads/main/public/images/products/IMG_3934.png",
 ];
 
 export default function App() {
@@ -192,35 +192,6 @@ export default function App() {
         </div>
       </section>
 
-      {/* FEATURED PRODUCTS SECTION */}
-      <section className="py-20 px-4 md:px-8 max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="font-display text-4xl md:text-5xl mb-4">MIRA LO QUE TENEMOS</h2>
-          <p className="text-gray-400 max-w-lg mx-auto">Nuestros productos y creaciones listos para acompañarte.</p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 max-w-4xl mx-auto">
-          {PRODUCT_PICS.map((img, i) => (
-            <motion.div 
-              key={i}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.15 }}
-              className="bg-black rounded-3xl overflow-hidden border border-zinc-800 shadow-xl group hover:border-miami-pink transition-all"
-            >
-              <div className="relative w-full aspect-[4/5] bg-zinc-900/50">
-                 <img 
-                    src={img} 
-                    alt={`Producto Miami ${i + 1}`} 
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                 />
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
       {/* INSTAGRAM VIBE / GALLERY SECTION */}
       <section className="py-20 overflow-hidden">
         <div className="px-4 text-center mb-12">
@@ -265,6 +236,40 @@ export default function App() {
             >
               <img src={img} alt="Miami Granizados feed" className="w-full h-full object-cover" />
             </motion.a>
+          ))}
+        </div>
+      </section>
+
+      {/* PROMOCIONES SECTION (Moved to the bottom in blur mode) */}
+      <section className="py-24 px-4 md:px-8 relative overflow-hidden bg-black/60 backdrop-blur-xl border-y border-zinc-800">
+        <div className="absolute inset-0 pointer-events-none opacity-20">
+           <div className="absolute top-1/2 left-0 w-96 h-96 bg-miami-cyan/50 blur-[120px] rounded-full mix-blend-screen transform -translate-y-1/2 -translate-x-1/2" />
+           <div className="absolute top-1/2 right-0 w-96 h-96 bg-miami-pink/50 blur-[120px] rounded-full mix-blend-screen transform -translate-y-1/2 translate-x-1/2" />
+        </div>
+
+        <div className="text-center mb-16 relative z-10">
+          <h2 className="font-display text-5xl md:text-7xl mb-4 text-white drop-shadow-[0_0_20px_rgba(255,42,128,0.5)]">PROMOCIONES</h2>
+          <p className="text-gray-300 max-w-xl mx-auto text-lg blur-0">Aprovecha nuestras promos increíbles, listas para refrescar tu momento a otro nivel.</p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 max-w-5xl mx-auto relative z-10">
+          {PRODUCT_PICS.map((img, i) => (
+            <motion.div 
+              key={i}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.15 }}
+              className="relative rounded-[2rem] overflow-hidden group shadow-[0_0_30px_rgba(0,0,0,0.5)] border border-white/10 hover:border-miami-pink/50 transition-colors backdrop-blur-md bg-white/5"
+            >
+              <div className="relative w-full aspect-[4/5] flex items-center justify-center p-4">
+                 <img 
+                    src={img} 
+                    alt={`Promoción Miami ${i + 1}`} 
+                    className="w-full h-full object-cover rounded-xl group-hover:scale-[1.03] transition-transform duration-700 ease-out shadow-2xl"
+                 />
+              </div>
+            </motion.div>
           ))}
         </div>
       </section>
