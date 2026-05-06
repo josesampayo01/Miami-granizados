@@ -467,9 +467,13 @@ export default function App() {
               key={i}
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ 
+                scale: 1.05,
+                boxShadow: "0 0 30px rgba(0, 229, 255, 0.4)",
+                borderColor: "rgba(0, 229, 255, 0.5)"
+              }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
+              transition={{ delay: i * 0.1, duration: 0.3 }}
               onClick={() => setSelectedVaper(asset)}
               className="relative w-full sm:w-64 aspect-[3/4] rounded-2xl overflow-hidden bg-zinc-900 border border-zinc-800 shadow-[0_0_20px_rgba(0,0,0,0.5)] group cursor-pointer"
             >
@@ -519,7 +523,13 @@ export default function App() {
               key={i}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ 
+                scale: 1.02,
+                boxShadow: "0 0 30px rgba(255, 0, 115, 0.4)",
+                borderColor: "rgba(255, 0, 115, 0.5)"
+              }}
               viewport={{ once: true }}
+              transition={{ duration: 0.3 }}
               className="relative aspect-[9/16] rounded-3xl overflow-hidden bg-zinc-900 border-2 border-zinc-800 shadow-2xl"
             >
                <video 
@@ -554,8 +564,12 @@ export default function App() {
               key={i}
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
+              whileHover={{ 
+                scale: 1.03,
+                boxShadow: "0 0 30px rgba(255, 42, 128, 0.4)",
+              }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.15 }}
+              transition={{ delay: i * 0.15, duration: 0.3 }}
               className="relative rounded-[2rem] overflow-hidden group shadow-[0_0_30px_rgba(0,0,0,0.5)] border border-white/10 hover:border-miami-pink/50 transition-colors backdrop-blur-md bg-white/5"
             >
               <div className="relative w-full aspect-[4/5] flex items-center justify-center p-4">
